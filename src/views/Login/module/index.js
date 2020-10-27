@@ -4,7 +4,7 @@ import mutations from './mutations';
 const login = {
 
    state:{
-      show: true
+      show: false
    },
    actions,
    mutations

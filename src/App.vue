@@ -9,9 +9,17 @@
       </router-link>
     </div>
     <router-view />
+    <Loading></Loading>
   </div>
 </template>
 
-<style lang="scss">
+<script>
+/* components */
+import Loading from './components/Loading/Loading';
 
-</style>
+export default {
+   components:{
+      Loading
+   }
+};
+</script>
