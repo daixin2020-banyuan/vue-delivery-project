@@ -132,7 +132,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 h3 {
-  width : 199px;
+  width :  199px;
   height : 100px;
   margin : 40px 0 0;
   columns : 1;
