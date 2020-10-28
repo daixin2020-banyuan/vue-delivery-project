@@ -15,7 +15,7 @@
 <script>
 import Loading from './components/Loading/Loading';
 import RegistModal from './components/modal/registModal/registModal';
-import ErrorModal from './components/errorModal/errorModal';
+import ErrorModal from './components/errorModal/ErrorModal';
 import Header from './components/Header/Header';
 
 export default {
