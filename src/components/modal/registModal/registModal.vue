@@ -19,7 +19,6 @@
 
 export default {
    name:'RegistModal',
-
    data (){
       return{
 
