@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="App">
     <Home></Home>
   </div>
 </template>
@@ -15,3 +15,9 @@ export default {
    }
 };
 </script>
+
+<style lang="scss">
+  .App{
+    padding : 0 120px;
+  }
+</style>
