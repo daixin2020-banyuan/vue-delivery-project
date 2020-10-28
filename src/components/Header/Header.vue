@@ -9,6 +9,7 @@
     </div>
     <div
       class="profile"
+
       @click="handleProfile()"
     >
       <img
@@ -107,6 +108,9 @@ export default {
       changeLanguage (v){
          this.language = v;
          console.log(this.language);
+      },
+      onblur (){
+         this.isShow = false;
       }
    }
 };
