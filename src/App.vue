@@ -13,13 +13,25 @@
   </div>
 </template>
 
-<script>
-/* components */
-import Loading from './components/Loading/Loading';
+<style lang="scss">
+#app {
+    font-family : Avenir, Helvetica, Arial, sans-serif;
+    color : #2c3e50;
+    text-align : center;
+    -webkit-font-smoothing : antialiased;
+    -moz-osx-font-smoothing : grayscale;
+}
 
-export default {
-   components:{
-      Loading
-   }
-};
-</script>
+#nav {
+    padding : 30px;
+
+    a {
+        font-weight : bold;
+        color : #2c3e50;
+
+        &.router-link-exact-active {
+            color : #42b983;
+        }
+    }
+}
+</style>
