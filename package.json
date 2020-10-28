@@ -39,10 +39,6 @@
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
   },
-<<<<<<< HEAD
-  
-=======
->>>>>>> db6b642882e5ec8790c138261971dfb0bbc3bbd0
   "lint-staged": {
     "*.{js,jsx,vue}": [
       "vue-cli-service lint",
