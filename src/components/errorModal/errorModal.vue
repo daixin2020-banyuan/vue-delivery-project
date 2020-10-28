@@ -19,7 +19,13 @@ export default {
 
 <style lang="scss">
 .error-div{
+  width : 100px;
+  height : 50px;
   margin-top :50px;
   margin-left :200px;
+}
+.vm--modal{
+width : 100px;
+  height : 50px;
 }
 </style>
