@@ -1,7 +1,9 @@
 <template>
-  <button @click="handleLogin">
-    login
-  </button>
+  <div style="margin-top :100px">
+    <button @click="handleLogin">
+      login
+    </button>
+  </div>
 </template>
 
 <script>

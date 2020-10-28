@@ -1,20 +1,26 @@
 <template>
   <div>
     <Login></Login>
-    <Hello></Hello>
+    <Loading></Loading>
+    <h1>{{ $t("tags.beijing") }}</h1>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+
+/* components */
+import Loading from '../components/Loading/Loading';
+
+/* views */
 import Login from '@/views/Login/Login';
-import Hello from '@/components/HelloWorld';
 
 export default {
    name: 'Home',
    components: {
       Login,
-      Hello
+
+      Loading
    }
 };
 </script>

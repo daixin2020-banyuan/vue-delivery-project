@@ -74,10 +74,7 @@
       "error":{
         "need-login":"Please log in first.",
         "error.user-duplicate":"Duplicate username",
-        "auth-failed":"Please login again.",
-        "timeout":"Time Out",
-        "unknown":"Unknown Error",
-        "network":"Network Error"
+        "auth-failed":"Please login again."
       }
   
 }
