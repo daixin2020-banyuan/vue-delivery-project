@@ -1,13 +1,21 @@
 
 <template>
-  <modal name="regist">
-    <div class="dasda">
-      <div>
-        用户名
-        <input />
+  <modal
+    name="regist"
+    :width="600"
+    :height="600"
+  >
+    <div class="main">
+      <div class="main-input">
+        <div>用户名</div>
+        <input class="registInput" />
       </div>
-      <div>密码<input /></div>
-      <div>确认<input /></div>
+      <div class="main-input">
+        <div>密码</div><input class="registInput" />
+      </div>
+      <div class="main-input">
+        <div>确认</div><input class="registInput" />
+      </div>
       <button @click="errorModal">
         注册
       </button>
@@ -31,7 +39,7 @@ export default {
             text: 'This text is passed as a property'
          }, {
             draggable: true,
-            clickToClose: false
+            clickToClose: false,
          });
 
       }
@@ -41,8 +49,20 @@ export default {
 </script>
 
 <style lang="scss">
-.dasda{
+.main{
+  padding :20px;
   margin-top :50px;
   margin-left :200px;
+  .registInput{
+    border-top :none;
+    border-right :none;
+    border-left :none;
+    outline : none;
+  }
+  .main-input{
+    display :flex;
+  }
+
 }
+
 </style>

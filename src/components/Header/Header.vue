@@ -54,7 +54,7 @@
         v-if="orderLogin === false"
         class="order-btn"
       >
-        历史订单
+        {{ $t("order.title") }}
       </button>
       <div
         class="language-button"
@@ -66,8 +66,8 @@
           中
         </button>
         <button
-          :class="language === 'us' ? 'on-choose' : ' '"
-          @click="changeLanguage('us')"
+          :class="language === 'en' ? 'on-choose' : ' '"
+          @click="changeLanguage('en')"
         >
           En
         </button>
@@ -106,6 +106,7 @@ export default {
       },
       /* 切换语言按钮 */
       changeLanguage (v){
+         this.$i18n.locale = v;
          this.language = v;
          console.log(this.language);
       },
