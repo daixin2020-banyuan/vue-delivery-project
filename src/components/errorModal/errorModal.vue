@@ -25,15 +25,7 @@ export default {
 
       };
    },
-   //    methods:{
-   //       butshow (){
-   //          this.$modal.show( {
-   //             draggable: true,
-   //             clickToClose: false
-   //          });
-
-//       }
-//    }
+  
 };
 </script>
 
@@ -61,5 +53,9 @@ export default {
         margin: 0 auto;
         outline: none;
     }
+}
+.vm--modal{
+width : 100px;
+  height : 50px;
 }
 </style>
