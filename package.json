@@ -10,6 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "eslint-plugin-import": "^2.22.1",
+    "lodash": "^4.17.20",
     "stylelint": "^13.1.0",
     "stylelint-config-recess-order": "^2.0.3",
     "stylelint-config-standard": "^19.0.0",
