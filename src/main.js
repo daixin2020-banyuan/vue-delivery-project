@@ -4,7 +4,11 @@ import router from './router';
 import store from './store';
 import i18n from '../src/common/I18n/language';
 
+import VModal from 'vue-js-modal';
+
 Vue.config.productionTip = false;
+
+Vue.use(VModal, { dynamic: true, injectModalsContainer: true, dynamicDefaults: { clickToClose: true } });
 
 new Vue({
    router,
