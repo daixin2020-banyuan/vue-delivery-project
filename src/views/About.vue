@@ -1,10 +1,10 @@
 <template>
-  <div class="about">
+  <dir class="about">
     <h1>This is an about page</h1>
     <button @click="showModal">
       show
     </button>
-  </div>
+  </dir>
 </template>
 
 <script>
@@ -19,6 +19,7 @@ export default {
          });
 
       }
+
    }
 };
 </script>

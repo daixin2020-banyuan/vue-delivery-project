@@ -8,7 +8,7 @@
       </div>
       <div>密码<input /></div>
       <div>确认<input /></div>
-      <button @click="error">
+      <button @click="errorModal">
         注册
       </button>
     </div>
@@ -19,11 +19,23 @@
 
 export default {
    name:'RegistModal',
+
    data (){
       return{
 
       };
    },
+   methods:{
+      errorModal (){
+         this.$modal.show('errorshow',{
+            text: 'This text is passed as a property'
+         }, {
+            draggable: true,
+            clickToClose: false
+         });
+
+      }
+   }
 
 };
 </script>
