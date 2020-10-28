@@ -9,6 +9,7 @@
     </div>
     <div
       class="profile"
+
       @click="handleProfile()"
     >
       <img
@@ -108,6 +109,9 @@ export default {
          this.$i18n.locale = v;
          this.language = v;
          console.log(this.language);
+      },
+      onblur (){
+         this.isShow = false;
       }
    }
 };

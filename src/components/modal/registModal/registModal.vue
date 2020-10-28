@@ -56,7 +56,6 @@ import '../../../style/style.scss';
 
 export default {
    name:'RegistModal',
-
    data (){
       return{
 
