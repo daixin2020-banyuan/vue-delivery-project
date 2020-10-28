@@ -1,0 +1,11 @@
+.header {
+    position : relative;
+    top : 53px;
+    display : flex;
+    flex-direction : row;
+    justify-content : space-between;
+    height : 45px;
+    div{
+        cursor : default;
+    }
+}
