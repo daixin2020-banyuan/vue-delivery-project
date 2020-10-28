@@ -3,8 +3,9 @@
     <div id="nav">
     </div>
     <Header></Header>
-
-    <router-view />
+    <div class="header-children">
+      <router-view />
+    </div>
     <Loading></Loading>
     <RegistModal />
     <ErrorModal />
@@ -31,5 +32,11 @@ export default {
 <style lang="scss">
   .App{
     padding : 0 120px;
+
   }
+  .header-children{
+      position : relative;
+      top :100px;
+  }
+
 </style>

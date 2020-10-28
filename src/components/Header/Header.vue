@@ -9,6 +9,7 @@
     </div>
     <div
       class="profile"
+
       @click="handleProfile()"
     >
       <img
@@ -81,11 +82,6 @@
 <script>
 import './Header.scss';
 
-/* globalstyle */
-import '../../style/color.scss';
-import '../../style/size.scss';
-import '../../style/style.scss';
-
 export default {
    name:'Header',
    data (){
@@ -108,6 +104,9 @@ export default {
          this.$i18n.locale = v;
          this.language = v;
          console.log(this.language);
+      },
+      onblur (){
+         this.isShow = false;
       }
    }
 };
