@@ -9,4 +9,20 @@ export default function CustomError (err){
 
    this.message = _.get(err, 'response.data.message') || err.message;
 
+   if(/timeout of/.test(err.message)){this.code = 'timeout';}
+
+   if(/Network Error /.test(err.message)){this.code = 'network';}
+
+   const trans = i18n.get(`error.${this.code}`);
+
+   if(trans){
+      this.message = i18n.get(`error.${this.code}`,{ ...this.details });
+
+   }else{
+      this.message =
+       _.get(err,'response.data.message') ||
+       err.message ||
+       i18n.get('error.unknown');
+   }
+
 }
