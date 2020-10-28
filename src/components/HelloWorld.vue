@@ -1,16 +1,23 @@
 <template>
   <div class="hello">
     <h1>{{ $t("hello") }}</h1>
+    <p>{{ $t("login.error.name") }}</p>
+    <p>{{ $t('tags.bbq') }}</p>
     <button @click="swichLangEn">
       英文
     </button>
     <button @click="swichLangCn">
       中文
     </button>
+    <button @click="sendRequest">
+      自定义Error
+    </button>
   </div>
 </template>
 
 <script>
+import { order } from '@/request/order.js';
+
 export default {
    name: 'HelloWorld',
    methods:{
@@ -19,6 +26,14 @@ export default {
       },
       swichLangCn (){
          this.$i18n.locale = 'zh';
+      },
+      async sendRequest (){
+
+         try {
+            await order();
+         } catch (error) {
+            console.log(error);
+         }
 
       }
    }
