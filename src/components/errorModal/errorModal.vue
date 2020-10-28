@@ -1,5 +1,9 @@
 <template>
-  <modal name="errorshow">
+  <modal
+    name="errorshow"
+    :width="300"
+    :height="300"
+  >
     <div class="error-div">
       这是错误的
     </div>

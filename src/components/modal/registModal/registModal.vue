@@ -31,7 +31,7 @@ export default {
             text: 'This text is passed as a property'
          }, {
             draggable: true,
-            clickToClose: false
+            clickToClose: false,
          });
 
       }
