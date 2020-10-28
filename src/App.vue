@@ -2,6 +2,8 @@
   <div id="app">
     <div id="nav">
     </div>
+    <Header></Header>
+
     <router-view />
     <Loading></Loading>
     <RegistModal />
@@ -13,13 +15,15 @@
 import Loading from './components/Loading/Loading';
 import RegistModal from './components/modal/registModal/registModal';
 import ErrorModal from './components/errorModal/errorModal';
+import Header from './components/Header/Header';
 
 export default {
    name:'App',
    components:{
       Loading,
       RegistModal,
-      ErrorModal
+      ErrorModal,
+      Header
    }
 };
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Header></Header>
     <Login></Login>
     <Loading></Loading>
+    <h1>{{ $t("tags.beijing") }}</h1>
   </div>
 </template>
 
@@ -10,7 +10,6 @@
 // @ is an alias to /src
 
 /* components */
-import Header from '../components/Header/Header';
 import Loading from '../components/Loading/Loading';
 
 /* views */
@@ -20,7 +19,7 @@ export default {
    name: 'Home',
    components: {
       Login,
-      Header,
+
       Loading
    }
 };
