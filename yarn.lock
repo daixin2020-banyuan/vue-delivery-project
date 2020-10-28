@@ -8708,8 +8708,16 @@ stylelint-order@4.1.x, stylelint-order@^4.0.0:
 
 stylelint-scss@^3.18.0:
   version "3.18.0"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-3.18.0.tgz#8f06371c223909bf3f62e839548af1badeed31e9"
+  integrity sha512-LD7+hv/6/ApNGt7+nR/50ft7cezKP2HM5rI8avIdGaUWre3xlHfV4jKO/DRZhscfuN+Ewy9FMhcTq0CcS0C/SA==
+=======
+>>>>>>> 89381c6054ccf2a4b7687732d9a2f47afe7e12c0
   resolved "https://registry.npm.taobao.org/stylelint-scss/download/stylelint-scss-3.18.0.tgz#8f06371c223909bf3f62e839548af1badeed31e9"
   integrity sha1-jwY3HCI5Cb8/Yug5VIrxut7tMek=
+>>>>>>> cd267a47f17512bef4dc2f6f1f89e77f309419fb
   dependencies:
     lodash "^4.17.15"
     postcss-media-query-parser "^0.2.3"
@@ -9464,12 +9472,24 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.4.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-hot-reload-api%2Fdownload%2Fvue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha1-UylVzB6yCKPZkLOp+acFdGV+CPI=
 
+<<<<<<< HEAD
 vue-js-modal@^2.0.0-rc.6:
   version "2.0.0-rc.6"
   resolved "https://registry.npm.taobao.org/vue-js-modal/download/vue-js-modal-2.0.0-rc.6.tgz#2fd596c79a713d2cbf447150abb5fefce65efd2d"
   integrity sha1-L9WWx5pxPSy/RHFQq7X+/OZe/S0=
   dependencies:
     resize-observer-polyfill "^1.5.1"
+=======
+vue-i18n@^8.22.1:
+  version "8.22.1"
+<<<<<<< HEAD
+  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.22.1.tgz#b9dd098a17e1f5adb91bdf9611f0385310da7cb1"
+  integrity sha512-JNgiEJ5a8YPfk5y2lKyfOAGLmkpAVfhaUi+T4wGpSppRYZ3XSyawSDDketY5KV2CsAiBLAGEIO6jO+0l2hQubg==
+=======
+  resolved "https://registry.npm.taobao.org/vue-i18n/download/vue-i18n-8.22.1.tgz#b9dd098a17e1f5adb91bdf9611f0385310da7cb1"
+  integrity sha1-ud0Jihfh9a25G9+WEfA4UxDafLE=
+>>>>>>> cd267a47f17512bef4dc2f6f1f89e77f309419fb
+>>>>>>> 89381c6054ccf2a4b7687732d9a2f47afe7e12c0
 
 "vue-loader-v16@npm:vue-loader@^16.0.0-beta.7":
   version "16.0.0-beta.8"

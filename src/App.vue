@@ -9,28 +9,20 @@
       </router-link>
     </div>
     <router-view />
+    <Loading></Loading>
+    <RegistModal />
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family : Avenir, Helvetica, Arial, sans-serif;
-  color : #2c3e50;
-  text-align : center;
-  -webkit-font-smoothing : antialiased;
-  -moz-osx-font-smoothing : grayscale;
-}
+<script>
+import Loading from './components/Loading/Loading';
+import RegistModal from './components/modal/registModal/registModal';
 
-#nav {
-  padding : 30px;
-
-  a {
-    font-weight : bold;
-    color : #2c3e50;
-
-    &.router-link-exact-active {
-      color : #42b983;
-    }
-  }
-}
-</style>
+export default {
+   name:'App',
+   components:{
+      Loading,
+      RegistModal
+   }
+};
+</script>
