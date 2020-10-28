@@ -82,11 +82,6 @@
 <script>
 import './Header.scss';
 
-/* globalstyle */
-import '../../style/color.scss';
-import '../../style/size.scss';
-import '../../style/style.scss';
-
 export default {
    name:'Header',
    data (){
