@@ -19,7 +19,6 @@ export default {
    name: 'Home',
    components: {
       Login,
-
       Loading
    }
 };

@@ -43,7 +43,7 @@
 }
 
 /* title */
-.title-text {
+.titleText {
   font-family : PingFangSC-Regular;
   font-size : 30px;
   font-style : normal;
@@ -54,7 +54,7 @@
   cursor : pointer;
 }
 
-.sub-title-text{
+.subTitleText{
   width : 220px;
   height : 24px;
   font-family :PingFangSC-Regular;
@@ -69,7 +69,7 @@
 
 /**横向布局**/
 
-.container-row {
+.containerRow  {
   display : flex;
   flex-direction : row;
 }
@@ -84,7 +84,7 @@
 
 /**横向居中布局**/
 
-.container-row-center {
+.containerRowCenter {
   display : flex;
   flex-direction : row;
   justify-content : center;
@@ -101,6 +101,14 @@
 .container-col {
   display : flex;
   flex-direction : column;
+}
+
+/**横向左右布局**/
+
+.containerBetween {
+  display : flex;
+  flex-direction : row;
+  justify-content : space-between;
 }
 
 /**垂直居中，水平居中**/
@@ -140,7 +148,7 @@
 }
 
 .input-title{
-  @extend .h3;// 最后一行俩端对齐 
+  @extend .h3; 
 }
 
 .input{
@@ -161,6 +169,8 @@
     background : $black;
     border : 0;
     border-radius : 25px;
+    outline : none;
+
 }
 
 .cursor{

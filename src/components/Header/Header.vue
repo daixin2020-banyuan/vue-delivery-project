@@ -80,6 +80,7 @@
 </template>
 
 <script>
+
 import './Header.scss';
 
 export default {

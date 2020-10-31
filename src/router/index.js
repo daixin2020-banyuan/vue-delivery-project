@@ -24,6 +24,12 @@ const routes = [
       name:'Restaurant',
       component: () =>import('../views/Menu/Menu.vue')
    }
+   ,
+   {
+      path:'/order',
+      name:'Order',
+      component: () =>import('../views/Order/Order.vue')
+   }
 ];
 
 const router = new VueRouter({
