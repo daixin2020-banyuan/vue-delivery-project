@@ -5,16 +5,11 @@
 </template>
 
 <script>
-
 import Header from '../../components/Header/Header';
 export default {
-   name:'Menu',
+   name:'Restaurant',
    components:{
       Header
    }
 };
 </script>
-
-<style>
-
-</style>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import _ from 'lodash';
 // import { parse,compile } from 'path-to-regexp';
 import CustomError from '../common/CustomError';
-// import {  getStorage } from '../common/utils';
+import {  getStorage } from '../common/utils';
 
 /* 30 sec timeout */
 axios.defaults.timeout = 30000;
@@ -15,9 +15,7 @@ const fetch = (options) => {
    let { url } = options;
    const { data = {}, headers = {}, method } = options;
 
-   // const token = _.get(getStorage('user'), 'token');
-
-   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVwZGF0ZWRBdCI6IjIwMjAtMTAtMjJUMTE6MDQ6MzQuOTIyWiIsIl9pZCI6IjVmOTdkYjNhNzU2ZTNmNzZhN2E3M2E0ZSIsInVzZXJuYW1lIjoiWWJzd2VNYWkiLCJwYXNzd29yZCI6IiQyYiQxMCRRT283UEIyMW5LRm5YblNsd1l6TGRleWhZMTd0UE93V3pFTzZGck1PMDdOY1RaRzVHYS9pLiIsIm5pY2tuYW1lIjoiIiwiY3JlYXRlZEF0IjoiMjAyMC0xMC0yN1QwODozMjo1OC45MzBaIiwiX192IjowfSwiaWF0IjoxNjAzODgyNDU2LCJleHAiOjE2MDQxNDE2NTZ9.kzWi_kvW-9qs11LEHAnpddH02KzVX6RdDhS1TlLR9IA';
+   const token = _.get(getStorage('user'), 'token');
 
    if (token) {
       headers.Authorization = `${token}`;

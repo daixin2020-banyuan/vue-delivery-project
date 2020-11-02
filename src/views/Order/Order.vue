@@ -34,7 +34,9 @@ import _ from 'lodash';
 /* components Header */
 import Header from '../../components/Header/Header';
 import OrderItem from '../../components/OrderItem/OrderItem';
-import { order } from '@/request/order.js';
+
+/* 不存储vuex 直接发请求时调用 */
+// import { order } from '@/request/order.js';
 
 import { mapActions,mapState } from 'vuex';
 
@@ -78,7 +80,6 @@ export default {
       this.getOrder();
       /* 根据需要选择是否写到全局store */
       /* this.orders = await order();
-
       console.log('orders ===>',this.orders); */
    },
    methods: {

@@ -22,6 +22,7 @@ export default new Vuex.Store({
       loading,
       login,
       order,
-      regist
+      regist,
+
    }
 });

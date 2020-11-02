@@ -4,7 +4,7 @@ import mutations from './mutations';
 const login = {
 
    state:{
-      user:[]
+      user:{}
    },
    actions,
    mutations

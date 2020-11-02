@@ -27,13 +27,18 @@ const routes = [
    {
       path:'/restaurant',
       name:'Restaurant',
-      component: () =>import('../views/Menu/Menu.vue')
+      component: () =>import('../views/Restaurant/Restaurant.vue')
    }
    ,
    {
       path:'/order',
       name:'Order',
       component: () =>import('../views/Order/Order.vue')
+   },
+   {
+      path:'/menu',
+      name:'Menu',
+      component: () =>import('../views/Menu/Menu.vue')
    }
 ];
 

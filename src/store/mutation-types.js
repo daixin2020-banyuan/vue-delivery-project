@@ -9,3 +9,6 @@ export const REGIST_USER = 'REGIST_USER';
 /* order */
 export const GET_ORDER = 'GET_ORDER';
 
+/* User */
+export const GET_USER = 'GET_USER';
+
