@@ -6,7 +6,7 @@
     padding-left="30px"
   >
     <div class="error-div">
-      这是错误的!
+      {{ errorMes }}
       <button
         class="error-but"
         @click="$modal.hide('errorshow')"
@@ -22,7 +22,7 @@ export default {
    name: 'ErrorModal',
    data (){
       return{
-
+         errorMes:''
       };
    },
 

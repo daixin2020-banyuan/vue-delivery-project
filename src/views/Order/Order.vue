@@ -26,7 +26,6 @@
       </div>
     </div>
   </div>
-  </div>
 </template>
 
 <script>
@@ -35,6 +34,7 @@ import _ from 'lodash';
 /* components Header */
 import Header from '../../components/Header/Header';
 import OrderItem from '../../components/OrderItem/OrderItem';
+import { order } from '@/request/order.js';
 
 import { mapActions,mapState } from 'vuex';
 
@@ -50,6 +50,8 @@ export default {
    data (){
       return{
          //  changeStyle:false,
+
+         orders:[]
       };
    },
    computed:{
@@ -71,9 +73,13 @@ export default {
       }
 
    },
-   created (){
-
+   async created (){
+      /* 写到Vue x */
       this.getOrder();
+      /* 根据需要选择是否写到全局store */
+      /* this.orders = await order();
+
+      console.log('orders ===>',this.orders); */
    },
    methods: {
       ...mapActions([ 'getOrder' ]),

@@ -152,13 +152,14 @@
 }
 
 .input{
-  width : 300px;
   @extend .h3;
+  width : 300px;
   margin-left : 25px;
   line-height : 1.5;
   text-align : center !important;
   background-color : transparent;
   border-bottom : 2px solid $black;
+  
 }
 
 .normal-btn{

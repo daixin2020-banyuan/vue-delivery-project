@@ -19,7 +19,7 @@
     </div>
     <div class="order-items">
       <div
-        v-for="(orderItem,index) in orderItems"
+        v-for="orderItem in orderItems"
         :key="orderItem[0]._id"
       >
         <div
@@ -103,7 +103,7 @@ export default {
    },
    computed:{
       orderItems (){
-
+         /* 让cart里每个相同的菜品按照id合并到一个数组里 */
          const orderItems = _(this.$props.item.cart)
             .groupBy(i => i._id)
             .value();
@@ -111,6 +111,7 @@ export default {
          return orderItems;
       },
       totalPrice (){
+         /* 初始化total */
          let total = 0;
 
          //  _.forEach(this.orderItems,(i)=>{
@@ -124,6 +125,8 @@ export default {
 
          //  });
          //  console.log(this.$props.item.cart);
+
+         /* 循环每个cart里的price */
          _.forEach(this.$props.item.cart,(item)=>{
             total += item.price / 100;
          });
@@ -138,7 +141,7 @@ export default {
       //   console.log('1312321313',this.item);
    },
    mounted (){
-      console.log('mounted',this.$props.item);
+      console.log('mounted',this.orderItems);
    },
    methods:{
       //   change (item,finalarr){
@@ -155,9 +158,10 @@ export default {
       change (e){
          /* 取消事件默认行为 */
          e.preventDefault();
-         this.changeStyle = !this.changeStyle;
+         this.changeStyle = true;
          /* 添加handleOut鼠标事件 */
-         document.addEventListener('mousedown', this.handleOut, true);
+         document.addEventListener('click', this.handleOut, true);
+         console.log('change',this.changeStyle);
 
       },
       /* 鼠标移出操作元素外改变changestyle状态 */
@@ -165,7 +169,7 @@ export default {
          const ref = this.$refs.orderBox;
          if (ref && !ref.contains(e.target)) {
             this.changeStyle = false;
-            // document.removeEventListener('mousedown',this.handleOut,true);
+            document.removeEventListener('click',this.handleOut,true);
          }
       },
 

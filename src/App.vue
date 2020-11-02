@@ -6,8 +6,6 @@
 
 <script>
 
-// import Header from './components/Header/Header';
-
 export default {
    name:'App',
    components:{
@@ -22,5 +20,6 @@ export default {
     width : 1440px;
     padding : 0 120px;
     margin : auto;
+
 }
 </style>
