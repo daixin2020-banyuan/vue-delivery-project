@@ -28,7 +28,7 @@ export default {
    },
    methods:{
       beforeOpen (e){
-
+         /* message是传入的值 */
          this.errorMes = e.params.message;
          /* 没有登录,跳转登录页面 */
          //  if(_.isFunction(e.params.func)){

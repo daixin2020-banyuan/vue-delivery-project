@@ -19,8 +19,8 @@ const actions = {
          console.log('user',user);
 
       } catch (error) {
-         this._vm.$modal.show('errorshow',{ errorMes:error.message });
-         console.log('errorshow',{ errorMes:error.message });
+         this._vm.$modal.show('errorshow',{ message:error.message });
+         console.log('errorshow',{ message:error.message });
       }
    }
 };

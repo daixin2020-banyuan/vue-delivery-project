@@ -15,6 +15,8 @@ export default function CustomError (err){
 
    const trans = i18n.t(`error.${this.code}`);
 
+   console.log('trans',trans);
+
    if(trans){
       this.message = i18n.t(`error.${this.code}`,{ ...this.details });
 
