@@ -28,7 +28,10 @@
             </div>
           </div>
           <div class="login-btn-box container-col vertical">
-            <button class="normal-btn login-btn">
+            <button
+              class="normal-btn login-btn"
+              @click="login"
+            >
               登陆
             </button>
             <button
@@ -59,6 +62,11 @@ import errorModal from '../../components/errorModal/ErrorModal';
 import '../../style/style.scss';
 import './Login.scss';
 
+import { mapActions } from 'vuex';
+
+/* 引入正则 */
+import { checkName,checkPassword } from '../../common/utils';
+
 export default {
    name: 'Login',
    components:{
@@ -74,6 +82,7 @@ export default {
       };
    },
    methods:{
+      ...mapActions([ 'sendLogin' ]),
       showModal (){
          this.$modal.show('regist',{
             text: 'This text is passed as a property'
@@ -81,6 +90,21 @@ export default {
             draggable: true,
             clickToClose: false,
          });
+      },
+      login (){
+         if(!checkName(this.username)){
+            this.$modal.show('errorshow',{ message:this.$t('login.error.name') });
+         }else if(!checkPassword(this.password)){
+            this.$modal.show('errorshow',{ message:this.$t('login.error.password') });
+            this.password = '';
+         }else {
+            let data = {
+               username:this.username,
+               password:this.password
+            };
+            this.sendLogin(data);
+
+         }
 
       }
    }

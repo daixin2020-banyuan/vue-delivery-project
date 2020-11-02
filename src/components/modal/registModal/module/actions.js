@@ -9,7 +9,6 @@ const actions = {
    async sendRegist ({ commit },data){
       try {
          console.log(data);
-         // let { username,password } = data;
 
          const { username,password } = data;
 
@@ -20,8 +19,8 @@ const actions = {
          console.log('user',user);
 
       } catch (error) {
-         // commit(types.GET_ORDER,{ message: error.message });
-         console.log('error',error);
+         this._vm.$modal.show('errorshow',{ errorMes:error.message });
+         console.log('errorshow',{ errorMes:error.message });
       }
    }
 };

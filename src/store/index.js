@@ -5,7 +5,7 @@ import Vuex from 'vuex';
 import loading from './loading';
 
 /* page */
-import login from '@/views/Login/module';
+import login from '../views/Login/module';
 import  order from '../views/Order/module';
 import regist from '../components/modal/registModal/module';
 

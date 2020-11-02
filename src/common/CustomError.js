@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import i18n from './I18n/language';
+import  i18n  from './I18n/language';
 
 export default function CustomError (err){
 
@@ -13,16 +13,16 @@ export default function CustomError (err){
 
    if(/Network Error /.test(err.message)){this.code = 'network';}
 
-   const trans = i18n.get(`error.${this.code}`);
+   const trans = i18n.t(`error.${this.code}`);
 
    if(trans){
-      this.message = i18n.get(`error.${this.code}`,{ ...this.details });
+      this.message = i18n.t(`error.${this.code}`,{ ...this.details });
 
    }else{
       this.message =
        _.get(err,'response.data.message') ||
        err.message ||
-       i18n.get('error.unknown');
+       i18n.t('error.unknown');
    }
 
 }

@@ -13,7 +13,7 @@
             用户名
           </div>
           <input
-            v-model="userName"
+            v-model="username"
             class="input"
           />
         </div>
@@ -55,14 +55,14 @@
 
 import '../../../style/style.scss';
 import './registModal.scss';
-import { checkName,checkPassword,checkconfirmPassword } from '../../../common/utils.js';
+import { checkName,checkPassword } from '../../../common/utils.js';
 import { mapActions } from 'vuex';
 
 export default {
    name:'RegistModal',
    data (){
       return{
-         userName:'',
+         username:'',
          password:'',
          confirmPassword:''
       };
@@ -72,7 +72,7 @@ export default {
       ...mapActions([ 'sendRegist' ]),
       errorModal (){
          this.$modal.show('errorshow',{
-            text: 'This text is passed as a property'
+            text: 'This text is passed as a property',
          }, {
             draggable: true,
             clickToClose: false,
@@ -80,16 +80,33 @@ export default {
       },
 
       regist (){
-         if(!checkName(this.userName)){
-            // this.errorModal();
-            this.$modal.show('errorshow',);
+         if(!checkName(this.username)){
+            this.$modal.show('errorshow',{ message:this.$t('login.error.name') });
+         }else if(!checkPassword(this.password)){
+            this.$modal.show('errorshow',{ message:this.$t('login.error.password') });
+            this.password = '';
          }
-         let data = {
-            username:this.userName,
-            password:this.password
 
-         };
-         this.sendRegist(data);
+         else if(this.confirmPassword != this.password){
+            this.$modal.show('errorshow',{ message:this.$t('login.error.comfirmPassword') });
+            this.confirmPassword = '';
+
+         }
+         else {
+            let data = {
+               username:this.username,
+               password:this.password
+            };
+
+            console.log(data);
+            this.sendRegist(data);
+            this.$modal.show('errorshow',{ message:this.$t('login.signUpSuccess') });
+            this.$modal.hide('regist');
+            this.username = '';
+            this.password = '';
+            this.confirmPassword = '';
+         }
+
       }
 
    },

@@ -4,6 +4,7 @@
     :height="120"
     :width="440"
     padding-left="30px"
+    @before-open="beforeOpen"
   >
     <div class="error-div">
       {{ errorMes }}
@@ -25,6 +26,16 @@ export default {
          errorMes:''
       };
    },
+   methods:{
+      beforeOpen (e){
+
+         this.errorMes = e.params.message;
+         /* 没有登录,跳转登录页面 */
+         //  if(_.isFunction(e.params.func)){
+         //     this.closeFunc = e.params.func;
+         //  }
+      },
+   }
 
 };
 </script>
