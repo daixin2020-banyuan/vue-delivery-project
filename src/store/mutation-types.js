@@ -14,4 +14,12 @@ export const SUBMIT_ORDER = 'SUBMIT_ORDER';
 
 /* language */
 export const SET_LANGUAGE = 'SET_LANGUAGE';
+/* registUser */
+export const REGIST_USER = 'REGIST_USER';
+
+/* order */
+export const GET_ORDER = 'GET_ORDER';
+
+/* User */
+export const GET_USER = 'GET_USER';
 

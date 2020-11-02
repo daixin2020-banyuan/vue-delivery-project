@@ -85,12 +85,12 @@
         >
           <div
             v-show="item.count>0"
-            class="container-between vertical cart-item"
+            class="containerBetween vertical cart-item"
           >
             <div class="cart-item-name">
               {{ item.name[`${lang}`] }}
             </div>
-            <div class="container-row">
+            <div class="containerRowCenter">
               <div class="cart-item-price">
                 {{ item.price * item.count|formatPrice }}
               </div>
@@ -241,19 +241,15 @@ export default {
       },
       paymentMethod (value){
          this.value = value;
+
       },
       closePayment (){
          this.flagShow = false;
       },
       async confirmPayment (){
          setStorage('payment',{ value:this.value });
-         let data = {
-            payment:getStorage('payment'),
-            cart:getStorage('cart'),			// 全部菜品平铺
-            userId:'59879867376b1e0011183f83',	// 用户id
-            restaurantId:'59879867376b1e0011183f83' // 餐馆id
-         };
-         this.submitOrder(data);
+
+         this.submitOrder();
          this.$router.push({
             path:'/order'
          });

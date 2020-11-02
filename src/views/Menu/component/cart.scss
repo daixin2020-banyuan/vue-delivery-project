@@ -70,12 +70,14 @@
     font-size : 14px;
     line-height : 30px;
     color : #fff;
+    cursor : pointer;
     background-color : #202020;
     border : 0;
     border-top-left-radius : 15px;
     border-top-right-radius : 0;
     border-bottom-right-radius : 0;
     border-bottom-left-radius : 15px;
+    outline : none;
 }
 .cart-item-count {
     width : 24px;
@@ -96,12 +98,14 @@
     line-height : 30px;
     color : #fff;
         text-align : left;
+        cursor : pointer;
     background-color : #202020;
         border : 0;
         border-top-left-radius : 0;
         border-top-right-radius : 15px;
         border-bottom-right-radius : 15px;
         border-bottom-left-radius : 0;
+        outline : none;
 
 }
 

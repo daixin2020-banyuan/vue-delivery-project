@@ -1,13 +1,16 @@
 import actions from './actions';
 import mutations from './mutations';
 
-const login = {
+const regist = {
 
    state:{
-      user:{}
+      registUser:{
+         userName:'',
+         password:''
+      }
    },
    actions,
    mutations
 };
 
-export default login;
+export default regist;

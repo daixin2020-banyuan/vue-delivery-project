@@ -3,9 +3,9 @@ import * as types from '../../../store/mutation-types';
 
 const mutations = {
 
-   [types.GET_USER] (state,data){
+   [types.GET_ORDER] (state,data){
 
-      state.user = data.user;
+      state.orderList = data.list;
 
    }
 };

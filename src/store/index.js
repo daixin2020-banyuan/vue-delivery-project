@@ -5,7 +5,9 @@ import Vuex from 'vuex';
 import loading from './loading';
 
 /* page */
-import login from '@/views/Login/module';
+import login from '../views/Login/module';
+import  order from '../views/Order/module';
+import regist from '../components/modal/registModal/module';
 
 /* menu */
 import menu from '@/views/Menu/module/index';
@@ -30,6 +32,9 @@ export default new Vuex.Store({
       login,
       menu,
       submit,
-      language
+      language,
+      order,
+      regist,
+
    }
 });

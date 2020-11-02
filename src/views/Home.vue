@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Login></Login>
+    <!-- <Login></Login> -->
     <Loading></Loading>
     <h1>{{ $t("tags.beijing") }}</h1>
   </div>
@@ -13,13 +13,12 @@
 import Loading from '../components/Loading/Loading';
 
 /* views */
-import Login from '@/views/Login/Login';
+// import Login from '@/views/Login/Login';
 
 export default {
    name: 'Home',
    components: {
-      Login,
-
+      // Login,
       Loading
    }
 };

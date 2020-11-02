@@ -1,13 +1,13 @@
 import actions from './actions';
 import mutations from './mutations';
 
-const login = {
+const order = {
 
    state:{
-      user:{}
+      orderList:[]
    },
    actions,
    mutations
 };
 
-export default login;
+export default order;

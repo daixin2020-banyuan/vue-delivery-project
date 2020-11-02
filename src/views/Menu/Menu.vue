@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="menu-box">
-      <div class="title-text">
+      <div class="titleText">
         好吃煎饼・东村
       </div>
-      <div class="sub-title-text">
+      <div class="sub-titleText">
         煎饼
       </div>
       <div class="all-category-box">
@@ -14,7 +14,7 @@
           class="category-box"
         >
           <div>
-            <div class="title-text">
+            <div class="titleText">
               {{ item.category.name[`${lang}`] }}
             </div>
             <div
@@ -30,39 +30,37 @@
           >
             <div>
               <div
-                v-show="i.count>0"
+                v-show=" i.count>0 "
                 class="menu-count"
               >
-                <div
-
-                  class="menu-count-text"
-                >
+                <div class="menu-count-text">
                   {{ i.count }}
                 </div>
               </div>
+            </div>
+            <div
+              class="containerBetween cursor"
+              @click="addCount(i)"
+            >
               <div
-                class="container-between cursor"
-                @click="addCount(i)"
+                class="menu-text cursor"
+                :style="{ opacity : i.available ? 1 : 0.2}"
               >
-                <div
-                  class="menu-text cursor"
-                  :style="{ opacity : i.available ? 1 : 0.2}"
-                >
-                  {{ i.name[`${lang}`] }}
-                </div>
-                <div
-                  class="menu-price cursor"
-                  :style="{ opacity : i.available ? 1 : 0.2}"
-                >
-                  {{ i.price|formatPrice }}
-                </div>
+                {{ i.name[`${lang}`] }}
+              </div>
+              <div
+                class="menu-price cursor"
+                :style="{ opacity : i.available ? 1 : 0.2}"
+              >
+                {{ i.price|formatPrice }}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Cart></Cart>
     </div>
+    <Cart></Cart>
+  </div>
   </div>
 </template>
 
@@ -113,7 +111,7 @@ export default {
       }
 
    }
-
 };
+
 </script>
 

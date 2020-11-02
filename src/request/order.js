@@ -1,12 +1,11 @@
 import request from '../common/request';
 import { host } from '../common/config';
 
-export async function order (data){
+export async function order (id){
 
    const result = await request({
-      url:`${host}/order/5e219e0aa274ef537609fe86`,
-      method:  'get',
-      data
+      url:`${host}/order/${id}`,
+      method:  'get'
    });
 
    return result;
