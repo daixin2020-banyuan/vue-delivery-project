@@ -20,10 +20,11 @@ const routes = [
          import(/* webpackChunkName: "about" */ '../views/About.vue')
    },
    {
-      path:'/restaurant',
-      name:'Restaurant',
+      path:'/menu',
+      name:'Menu',
       component: () =>import('../views/Menu/Menu.vue')
-   }
+   },
+
 ];
 
 const router = new VueRouter({

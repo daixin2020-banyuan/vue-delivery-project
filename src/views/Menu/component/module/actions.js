@@ -1,15 +1,17 @@
 import * as types from '@/store/mutation-types';
+import { submit } from '@/Request/submit';
+
+// import { getStorage } from '@/common/utils';
 
 const actions =  {
 
-   async login ({ commit }){
+   async submitOrder ({ commit },data){
 
       try {
-
          commit(types.SHOW_LOADING);
-         //   router.push('/restaurant');
+         await sleep(500);
+         await submit(data);
 
-         await sleep(5000);
       } catch (error) {
 
          console.log(error);
@@ -17,6 +19,7 @@ const actions =  {
          commit(types.HIDE_LOADING);
       }
    },
+
 };
 
 function sleep (time){

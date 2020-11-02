@@ -23,6 +23,7 @@ export default function CustomError (err){
        _.get(err,'response.data.message') ||
        err.message ||
        i18n.get('error.unknown');
+      console.log(this.message);
    }
 
 }

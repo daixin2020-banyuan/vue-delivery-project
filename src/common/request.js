@@ -5,7 +5,7 @@ import CustomError from '../common/CustomError';
 import {  getStorage } from '../common/utils';
 
 /* 30 sec timeout */
-axios.defaults.timeout = 30000;
+axios.defaults.timeout = 300000;
 
 /**
  * request
@@ -15,10 +15,10 @@ const fetch = (options) => {
    let { url } = options;
    const { data = {}, headers = {}, method } = options;
 
-   const id = _.get(getStorage('user'), '_id');
+   const token = _.get(getStorage('user'), 'token');
 
-   if (id) {
-      headers.user = `${id}`;
+   if (token) {
+      headers.Authorization = `${token}`;
    }
 
    headers['Content-Type'] = 'application/json';
