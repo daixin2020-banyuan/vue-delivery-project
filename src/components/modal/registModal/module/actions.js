@@ -8,7 +8,6 @@ import { encode } from '../../../../common/utils';
 const actions = {
    async sendRegist ({ commit },data){
       try {
-         console.log(data);
 
          const { username,password } = data;
 
@@ -16,11 +15,8 @@ const actions = {
 
          commit(types.REGIST_USER,user);
 
-         console.log('user',user);
-
       } catch (error) {
          this._vm.$modal.show('errorshow',{ message:error.message });
-         console.log('errorshow',{ message:error.message });
       }
    }
 };

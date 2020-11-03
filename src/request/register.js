@@ -3,7 +3,6 @@ import { host } from '../common/config';
 
 export async function register (data){
 
-   console.log(data);
    const result = await request({
       url:`${host}/user/register`,
       method:  'post',

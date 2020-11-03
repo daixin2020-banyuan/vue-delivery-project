@@ -7,7 +7,7 @@ const mutations = {
    },
    [types.SET_COUNTARRAY] (state,data){
       state.count.push(data);
-      console.log(state.count);
+      // console.log(state.count);
    },
    [types.DEL_COUNTARRAY] (state,index){
       state.count.splice(index,1);

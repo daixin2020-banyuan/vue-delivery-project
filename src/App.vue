@@ -27,6 +27,6 @@ export default {
 }
 .header-children{
    position : relative;
-  top :100px;
+    top :100px;
 }
 </style>

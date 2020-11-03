@@ -155,6 +155,7 @@
         </button>
       </div>
     </div>
+    <errorModal></errorModal>
   </div>
 </template>
 
@@ -163,9 +164,14 @@ import './cart.scss';
 import {  mapActions ,mapState } from 'vuex';
 import _ from 'lodash';
 import { setStorage ,getStorage } from '@/common/utils.js';
+import errorModal from '@/components/errorModal/ErrorModal';
 
 export default {
    name:'Cart',
+   components:{
+      errorModal
+
+   },
    filters: {
       formatPrice (value) {
          return '$' + value / 100;
@@ -249,13 +255,34 @@ export default {
       async confirmPayment (){
          setStorage('payment',{ value:this.value });
 
-         this.submitOrder();
-         this.$router.push({
-            path:'/order'
-         });
+         if(!getStorage('user')){
+            this.$modal.show('errorshow',{
+               message:this.$t('error.auth-failed') ,
+               func:()=>{
+                  this.$router.push({
+                     path:'/login'
+                  });
+               }
+            });
+
+         }else{
+            this.submitOrder();
+            this.$router.push({
+               path:'/order'
+            });
+         }
+
       },
       paymentSetLocal (){
          this.$refs[`${this.value}`].checked = true;
+      },
+      sleep (time){
+         return new Promise((res)=>{
+
+            setTimeout(()=>{
+               res();
+            },time);
+         });
       }
 
    }

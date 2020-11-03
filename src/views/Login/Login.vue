@@ -67,6 +67,7 @@ export default {
    components:{
       regisModal,
       errorModal,
+
    },
 
    data (){

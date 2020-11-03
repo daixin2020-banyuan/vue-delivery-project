@@ -98,7 +98,6 @@ export default {
                password:this.password
             };
 
-            console.log(data);
             this.sendRegist(data);
             this.$modal.show('errorshow',{ message:this.$t('login.signUpSuccess') });
             this.$modal.hide('regist');

@@ -10,7 +10,6 @@ const actions =  {
       try {
          commit(types.SHOW_LOADING);
          await sleep(2000);
-         console.log(1);
          let data = {
             payment:getStorage('payment').value,
             cart:getStorage('cart'),

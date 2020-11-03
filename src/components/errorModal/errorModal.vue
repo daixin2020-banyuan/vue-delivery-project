@@ -10,7 +10,7 @@
       {{ errorMes }}
       <button
         class="error-but"
-        @click="$modal.hide('errorshow')"
+        @click="close"
       >
         关闭
       </button>
@@ -19,11 +19,13 @@
 </template>
 
 <script>
+import _ from 'lodash';
 export default {
    name: 'ErrorModal',
    data (){
       return{
-         errorMes:''
+         errorMes:'',
+         closeFunc: ()=>{}
       };
    },
    methods:{
@@ -31,10 +33,15 @@ export default {
          /* message是传入的值 */
          this.errorMes = e.params.message;
          /* 没有登录,跳转登录页面 */
-         //  if(_.isFunction(e.params.func)){
-         //     this.closeFunc = e.params.func;
-         //  }
+         if(_.isFunction(e.params.func)){
+            this.closeFunc = e.params.func;
+         }
       },
+      close (){
+
+         this.closeFunc();
+         this.$modal.hide('errorshow');
+      }
    }
 
 };

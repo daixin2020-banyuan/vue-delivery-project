@@ -26,7 +26,6 @@
 <script>
 import _ from 'lodash';
 
-/* components Header */
 import OrderItem from '../../components/OrderItem/OrderItem';
 
 /* 不存储vuex 直接发请求时调用 */

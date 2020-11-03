@@ -17,7 +17,7 @@ const actions =  {
 
          commit(types.REGIST_USER,user);
 
-         console.log('logindata',user);
+         // console.log('logindata',user);
 
          setStorage('user',user);
 
@@ -28,8 +28,8 @@ const actions =  {
             });
          }
       } catch (error) {
-         console.log('=====>in');
-         console.log('error',error);
+         // console.log('=====>in');
+         // console.log('error',error);
 
          this._vm.$modal.show('errorshow',{ message:error.message });
 
