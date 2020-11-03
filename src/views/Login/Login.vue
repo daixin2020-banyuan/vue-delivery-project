@@ -54,7 +54,6 @@ import regisModal from '../../components/modal/registModal/registModal';
 import errorModal from '../../components/errorModal/ErrorModal';
 
 /* style */
-import '../../style/style.scss';
 import './Login.scss';
 
 import { mapActions } from 'vuex';

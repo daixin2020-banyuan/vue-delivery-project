@@ -160,7 +160,7 @@
 </template>
 
 <script>
-import './cart.scss';
+
 import {  mapActions ,mapState } from 'vuex';
 import _ from 'lodash';
 import { setStorage ,getStorage } from '@/common/utils.js';
@@ -290,6 +290,6 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang='scss' scoped>
+@import './cart.scss';
 </style>
