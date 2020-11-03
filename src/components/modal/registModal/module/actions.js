@@ -14,7 +14,7 @@ const actions = {
 
          const user = await register( { username:encode(username),password:encode(password) });
 
-         commit(types.REGIST_USER,user);
+         commit(types.REGIST_USER);
 
          console.log('user',user);
 

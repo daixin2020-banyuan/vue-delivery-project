@@ -5,8 +5,8 @@ const regist = {
 
    state:{
       registUser:{
-         userName:'',
-         password:''
+         // userName:'',
+         // password:''
       }
    },
    actions,

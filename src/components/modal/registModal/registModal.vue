@@ -80,6 +80,7 @@ export default {
       },
 
       regist (){
+         /* 前端正则验证完成后 发送请求 */
          if(!checkName(this.username)){
             this.$modal.show('errorshow',{ message:this.$t('login.error.name') });
          }else if(!checkPassword(this.password)){

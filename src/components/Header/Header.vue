@@ -20,7 +20,7 @@
       >
     </div>
 
-    <!-- 未登陆profile -->
+    <!-- 显示profile -->
     <div
       ref="dropBox"
       class="profile-drop-down"
@@ -32,7 +32,7 @@
         :style="{backgroundColor: '#fff',color: '#797979'}"
         @click="login"
       >
-        登录
+        {{ $t("login.login") }}
       </button>
 
       <button
@@ -40,7 +40,7 @@
         class="profile-button order-btn"
         @click="order"
       >
-        历史订单
+        {{ $t("order.title") }}
       </button>
 
       <div
@@ -64,7 +64,7 @@
         class="profile-button log-out"
         @click="logout"
       >
-        登出
+        {{ $t("logout") }}
       </button>
     </div>
 
@@ -148,8 +148,10 @@ export default {
          }
       },
 
+      /* 根据路由名称改变drop down样式 */
       changeBox (){
          console.log('$route',this.$route);
+
          if(getStorage('user')){
             if(this.$route.name === 'Login' ){
                this.isLogin = false;
@@ -172,9 +174,7 @@ export default {
          this.language = v;
          console.log(this.language);
       },
-      onblur (){
-         this.isShow = false;
-      },
+
       login (){
          this.$router.push({
             name:'Login'
@@ -187,8 +187,8 @@ export default {
       },
       logout (){
          localStorage.removeItem('user');
-         /* 移除改变状态 */
-         //  this.changeBox();
+
+         /* 移除后 改变状态 */
          this.isLogin = false;
          this.isLogout = false;
          this.orderLogin = false;
