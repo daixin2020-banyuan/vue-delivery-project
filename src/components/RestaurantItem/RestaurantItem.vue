@@ -1,75 +1,90 @@
 <template>
   <div>
-    <div
-      v-for="item in restList"
-      :key="item._id"
-    >
-      <div class="rest-box">
-        <div class="titleText">
-          {{ item.name['zh-CN'] }}
-        </div>
-        <div class="subTitleText">
-          {{ (item.tags) }}
-        </div>
-        <div class="img-box">
-          <div class="img-box1">
-            <div class="rest-food-name">
-              我是大傻冒
-            </div>
-            <div class="rest-image-box">
-              <img
-                src="../../assets/dark-dish.png"
-                class="dish-image"
-              >
-            </div>
+    <div class="rest-box">
+      <div class="titleText">
+        {{ item.name[`${lang}`] }}
+      </div>
+      <div class="subTitleText">
+        {{ $t(`tags.${item.tags}`) }}
+      </div>
+      <div class="img-box">
+        <div class="img-box1">
+          <div class="rest-food-name">
+            {{ item.items[0].name[`${lang}`] }}
           </div>
-          <div class="img-box2">
-            <div class="rest-food-name">
-              我是大傻冒
-            </div>
-            <div class="rest-image-box">
-              <img
-                src="../../assets/dark-dish.png"
-                class="dish-image1"
-              >
-            </div>
+          <div class="rest-image-box">
+            <img
+              src="../../assets/dark-dish.png"
+              class="dish-image"
+            >
+            <img
+              class="food-image"
+              :src="item.items[0].image.url"
+              style="width :100%"
+            >
           </div>
-          <div class="img-box3">
-            <div class="rest-food-name">
-              我是大傻冒
-            </div>
-            <div class="rest-image-box">
-              <img
-                src="../../assets/dark-dish.png"
-                class="dish-image1"
-              >
-            </div>
+        </div>
+        <div
+          class="
+              img-box2"
+        >
+          <div class="rest-food-name">
+            {{ item.items[1].name[`${lang}`] }}
+          </div>
+          <div class="rest-image-box">
+            <img
+              src="../../assets/dark-dish.png"
+              class="dish-image1"
+            >
+            <img
+              class="food-image"
+              :src="item.items[1].image.url"
+              style="width :100%"
+            >
+          </div>
+        </div>
+        <div class="img-box3">
+          <div class="rest-food-name">
+            {{ item.items[2].name[`${lang}`] }}
+          </div>
+          <div class="rest-image-box">
+            <img
+              src="../../assets/dark-dish.png"
+              class="dish-image1"
+            >
+            <img
+              class="food-image"
+              :src="item.items[2].image.url"
+              style="width :100%"
+            >
           </div>
         </div>
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
-import { mapState , mapActions } from 'vuex';
+import { mapState } from 'vuex';
 import _ from 'lodash';
+
 export default {
    name:'RestaurantAssembly',
-   computed :{
+
+   props:{
+      item:{
+         type:Object,
+         required:true
+      }
+   },
+   computed:{
       ...mapState({
-         restList:state=>state.restList.restList
-      }),
-      // restaurantName (){
-      //    return _.get(this.restList,'restList.name[zh-CN]','');
-      // }
-   },
-   created (){
-      this.getRest();
-   },
-   methods:{
-      ...mapActions([ 'getRest' ])
+         lang:state=>state.language.lang
+      })
+
    }
+
 };
 </script>
 
@@ -216,5 +231,9 @@ export default {
         background-color :#f7f7f7;
         border-radius :10px;
         box-shadow :0 2px 10px 0 hsla(0, 0%, 81.6%, .5)
+    }
+    .food-image {
+    position : absolute;
+    z-index : 2;
     }
 </style>
