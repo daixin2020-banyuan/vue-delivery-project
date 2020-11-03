@@ -47,14 +47,14 @@
         class="language-button"
       >
         <button
-          :class="language === 'zh' ? 'on-choose' : ' '"
-          @click="changeLanguage('zh')"
+          :class="language === 'zh-CN' ? 'on-choose' : ' '"
+          @click="changeLanguage('zh-CN')"
         >
           中
         </button>
         <button
-          :class="language === 'us' ? 'on-choose' : ' '"
-          @click="changeLanguage('us')"
+          :class="language === 'en-US' ? 'on-choose' : ' '"
+          @click="changeLanguage('en-US')"
         >
           En
         </button>
@@ -67,52 +67,21 @@
         {{ $t("logout") }}
       </button>
     </div>
-
-    <!-- 登陆后profile -->
-    <!-- <div
-      class="profile-drop-down"
-      :style="{display:isShow ? 'block' : 'none'}"
-    >
-      <button
-        v-if="orderLogin === false"
-        class="order-btn"
-      >
-        {{ $t("order.title") }}
-      </button>
-      <div
-        class="language-button"
-      >
-        <button
-          :class="language === 'zh' ? 'on-choose' : ' '"
-          @click="changeLanguage('zh')"
-        >
-          中
-        </button>
-        <button
-          :class="language === 'en' ? 'on-choose' : ' '"
-          @click="changeLanguage('en')"
-        >
-          En
-        </button>
-      </div>
-      <button class="profile-button log-out">
-        登出
-      </button>
-    </div> -->
   </div>
 </template>
 
 <script>
 
 import './Header.scss';
-import { getStorage } from '../../common/utils';
+import { getStorage ,setStorage } from '../../common/utils';
+import { mapActions }from'vuex';
 
 export default {
    name:'Header',
    data (){
       return{
          isShow:false,
-         language:'zh',
+         language:'zh-CN',
          /* 设置是否登陆状态属性 分别显示profile */
          isLogin:true,
          isLogout:false,
@@ -124,6 +93,7 @@ export default {
 
    },
    methods:{
+      ...mapActions([ 'setLanguage' ]),
       /* 显示profile */
       handleProfile (){
          /* 取消事件默认行为 */
@@ -172,7 +142,7 @@ export default {
       changeLanguage (v){
          this.$i18n.locale = v;
          this.language = v;
-         console.log(this.language);
+         this.setLanguage(v);
       },
 
       login (){

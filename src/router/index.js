@@ -18,7 +18,7 @@ const routes = [
    {
       path:'/restaurant',
       name:'Restaurant',
-      component: () =>import('../views/Restaurant/restaurant.vue')
+      component: () =>import('@/views/Restaurant/Restaurant.vue')
    }
    ,
    {

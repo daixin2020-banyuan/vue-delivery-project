@@ -1,5 +1,5 @@
 import * as types from '@/store/mutation-types';
-import { menu } from '@/request/menu';
+import { menu } from '@/Request/menu';
 import _ from 'lodash';
 // import { getStorage } from '@/common/utils';
 

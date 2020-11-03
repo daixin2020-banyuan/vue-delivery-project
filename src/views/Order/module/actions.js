@@ -1,6 +1,6 @@
 
 import * as types from '../../../store/mutation-types';
-import { order }from '@/request/order';
+import { order }from '@/Request/order';
 import { getStorage } from '../../../common/utils';
 import router from '../../../router/index';
 
