@@ -1,46 +1,43 @@
 <template>
   <div>
-    <Header></Header>
-    <div class="header-children">
-      <div class="center-box">
-        <div>
-          <div class="input-box login-input-box">
-            <div class="input-Title">
-              用户名
-            </div>
-            <div>
-              <input
-                v-model="username"
-                class="input"
-              />
-            </div>
+    <div class="center-box">
+      <div>
+        <div class="input-box login-input-box">
+          <div class="input-Title">
+            用户名
           </div>
-          <div class="input-box login-input-box">
-            <div class="input-Title">
-              密码
-            </div>
-            <div>
-              <input
-                v-model="password"
-                class="input"
-                type="password"
-              />
-            </div>
+          <div>
+            <input
+              v-model="username"
+              class="input"
+            />
           </div>
-          <div class="login-btn-box container-col vertical">
-            <button
-              class="normal-btn login-btn"
-              @click="login"
-            >
-              登陆
-            </button>
-            <button
-              class="normal-btn sign-up-btn"
-              @click="showModal"
-            >
-              注册
-            </button>
+        </div>
+        <div class="input-box login-input-box">
+          <div class="input-Title">
+            密码
           </div>
+          <div>
+            <input
+              v-model="password"
+              class="input"
+              type="password"
+            />
+          </div>
+        </div>
+        <div class="login-btn-box container-col vertical">
+          <button
+            class="normal-btn login-btn"
+            @click="login"
+          >
+            登陆
+          </button>
+          <button
+            class="normal-btn sign-up-btn"
+            @click="showModal"
+          >
+            注册
+          </button>
         </div>
       </div>
     </div>
@@ -51,8 +48,6 @@
 </template>
 
 <script>
-
-import Header from '../../components/Header/Header';
 
 /* modal */
 import regisModal from '../../components/modal/registModal/registModal';
@@ -72,7 +67,6 @@ export default {
    components:{
       regisModal,
       errorModal,
-      Header
    },
 
    data (){

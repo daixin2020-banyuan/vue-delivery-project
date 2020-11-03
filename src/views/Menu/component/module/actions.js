@@ -1,15 +1,15 @@
 import * as types from '@/store/mutation-types';
 import { submit } from '@/Request/submit';
 
-import { getStorage } from '@/common/utils';
+import { getStorage ,cleanStorage } from '@/common/utils';
 
 const actions =  {
 
    async submitOrder ({ commit }){
 
       try {
-         // commit(types.SHOW_LOADING);
-         // await sleep(500);
+         commit(types.SHOW_LOADING);
+         await sleep(2000);
          console.log(1);
          let data = {
             payment:getStorage('payment').value,
@@ -19,10 +19,11 @@ const actions =  {
          };
 
          await submit(data);
+         cleanStorage('cart');
 
       } catch (error) {
 
-         console.log(error);
+         this._vm.$modal.show('errorshow',{ message:error.message });
       }finally{
          commit(types.HIDE_LOADING);
       }
@@ -30,14 +31,14 @@ const actions =  {
 
 };
 
-// function sleep (time){
+function sleep (time){
 
-//    return new Promise((res)=>{
+   return new Promise((res)=>{
 
-//       setTimeout(()=>{
-//          res();
-//       },time);
-//    });
-// }
+      setTimeout(()=>{
+         res();
+      },time);
+   });
+}
 
 export default actions;
