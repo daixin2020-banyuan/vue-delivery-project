@@ -15,9 +15,9 @@ const actions = {
 
             commit(types.GET_ORDER,list);
 
-            console.log('list',list);
+            // console.log('list',list);
          }else {
-            console.log(1231232131);
+            // console.log(1231232131);
             router.push({
                name:'Restaurant'
             });
@@ -25,7 +25,7 @@ const actions = {
 
       } catch (error) {
          // commit(types.GET_ORDER,{ message: error.message });
-         console.log('error',error);
+         this._vm.$modal.show('errorshow',{ message:error.message });
       }finally{
          commit(types.HIDE_LOADING);
       }

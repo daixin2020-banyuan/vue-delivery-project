@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< HEAD
     <div>
       <Header></Header>
     </div>
@@ -19,10 +20,13 @@
         </div>
       </div>
     </div>
+=======
+>>>>>>> 8e3f89fff217170586f1079dfe418160e2029559
   </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 
 import Header from '../../components/Header/Header';
 import RestaurantItem from '../../components/RestaurantItem/RestaurantItem';
@@ -35,6 +39,11 @@ export default {
    components:{
       Header,
       RestaurantItem
+=======
+export default {
+   name:'Restaurant',
+   components:{
+>>>>>>> 8e3f89fff217170586f1079dfe418160e2029559
    }
 };
 </script>

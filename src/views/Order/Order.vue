@@ -1,27 +1,22 @@
 <template>
   <div>
-    <Header></Header>
-    <div
-      class="header-children"
-    >
-      <div class="containerBetween container-row">
-        <div class="order-tab">
-          <div class="order-tab-fixed">
-            历史订单
-            <div class="rectangle"></div>
-          </div>
+    <div class="containerBetween container-row">
+      <div class="order-tab">
+        <div class="order-tab-fixed">
+          历史订单
+          <div class="rectangle"></div>
         </div>
-        <div class="order-list">
-          <div
-            v-for="(item, index) in finalarr"
-            :key="item.key"
-          >
-            <OrderItem
-              :item="item"
-              :index="index"
-              :finalarr="finalarr"
-            ></OrderItem>
-          </div>
+      </div>
+      <div class="order-list">
+        <div
+          v-for="(item, index) in finalarr"
+          :key="item.key"
+        >
+          <OrderItem
+            :item="item"
+            :index="index"
+            :finalarr="finalarr"
+          ></OrderItem>
         </div>
       </div>
     </div>
@@ -31,8 +26,6 @@
 <script>
 import _ from 'lodash';
 
-/* components Header */
-import Header from '../../components/Header/Header';
 import OrderItem from '../../components/OrderItem/OrderItem';
 
 /* 不存储vuex 直接发请求时调用 */
@@ -46,7 +39,6 @@ import './Order.scss';
 export default {
    name:'Order',
    components:{
-      Header,
       OrderItem
    },
    data (){

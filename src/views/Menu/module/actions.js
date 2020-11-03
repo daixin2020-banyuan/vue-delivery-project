@@ -8,15 +8,15 @@ const actions =  {
    async getMenu ({ commit }){
 
       try {
-         // commit(types.SHOW_LOADING);
-         // await sleep(2000);
+         commit(types.SHOW_LOADING);
+         await sleep(2000);
          const data = await menu();
          const menuList = renderMenu(data);
          commit(types.GET_MENU,menuList);
 
       } catch (error) {
 
-         console.log(error);
+         this._vm.$modal.show('errorshow',{ message:error.message });
       }finally{
          commit(types.HIDE_LOADING);
       }
@@ -35,15 +35,15 @@ const actions =  {
 
 };
 
-// function sleep (time){
+function sleep (time){
 
-//    return new Promise((res)=>{
+   return new Promise((res)=>{
 
-//       setTimeout(()=>{
-//          res();
-//       },time);
-//    });
-// }
+      setTimeout(()=>{
+         res();
+      },time);
+   });
+}
 
 function renderMenu (data){
    let categories = data.categories;

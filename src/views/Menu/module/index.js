@@ -5,8 +5,8 @@ import { getStorage } from '@/common/utils';
 const menu = {
 
    state:{
-      menuList : {} || getStorage('menuList'),
-      count:[] || getStorage('cart')
+      menuList :  getStorage('menuList') || {} ,
+      count:  getStorage('cart') || []
       // menuList:{},
       // count:[]
    },

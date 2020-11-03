@@ -53,11 +53,10 @@
 
 <script>
 
-import '../../../style/style.scss';
-import './registModal.scss';
 import { checkName,checkPassword } from '../../../common/utils.js';
 import { mapActions } from 'vuex';
 
+// import './registModal.scss';
 export default {
    name:'RegistModal',
    data (){
@@ -99,7 +98,6 @@ export default {
                password:this.password
             };
 
-            console.log(data);
             this.sendRegist(data);
             this.$modal.show('errorshow',{ message:this.$t('login.signUpSuccess') });
             this.$modal.hide('regist');

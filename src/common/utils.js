@@ -16,6 +16,11 @@ export function getStorage (key) {
    }
 }
 
+export function cleanStorage (key){
+   if(!key) return;
+   localStorage.removeItem(key);
+}
+
 /* 加密用户名，密码 */
 export function encode (str){
 
