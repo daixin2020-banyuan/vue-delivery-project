@@ -1,11 +1,12 @@
 import request from '../common/request';
 import { host } from '../common/config';
 
-export async function rest (){
+export async function submit (data){
 
    const result = await request({
-      url:`${host}/restaurant/location/-74.0059413,40.7127837`,
-      method:  'get',
+      url:`${host}/order`,
+      method:  'put',
+      data
 
    });
 

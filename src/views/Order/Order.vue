@@ -59,6 +59,8 @@ export default {
    computed:{
       ...mapState({
          'orderList': state => state.order.orderList,
+         lang:state=>state.language.lang,
+
       }),
       finalarr () {
          this.orderList.forEach(obj => {

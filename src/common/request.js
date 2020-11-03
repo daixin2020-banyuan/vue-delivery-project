@@ -5,7 +5,7 @@ import CustomError from '../common/CustomError';
 import {  getStorage } from '../common/utils';
 
 /* 30 sec timeout */
-axios.defaults.timeout = 30000;
+axios.defaults.timeout = 300000;
 
 /**
  * request

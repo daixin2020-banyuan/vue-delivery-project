@@ -27,7 +27,7 @@
         >
           <div class="cart-item-name">
             <!-- 香菇肉末米线 不辣 -->
-            {{ orderItem[0].name['zh-CN'] }}
+            {{ orderItem[0].name[`${lang}`] }}
           </div>
           <div class="containerRow">
             <div
@@ -57,7 +57,7 @@
       <div class="containerBetween order-total">
         <div>总价:</div>
 
-        <div>${{ totalPrice }}</div>
+        <div>${{ totalPrice.toFixed(2) }}</div>
       </div>
       <div class="containerRowCenter more-btn">
         <button
@@ -74,6 +74,7 @@
 <script>
 import './OrderItem.css';
 import '../../style/style.scss';
+import { mapState } from 'vuex';
 
 import _ from 'lodash';
 
@@ -102,6 +103,9 @@ export default {
       };
    },
    computed:{
+      ...mapState({
+         lang:state=>state.language.lang,
+      }),
       orderItems (){
          /* 让cart里每个相同的菜品按照id合并到一个数组里 */
          const orderItems = _(this.$props.item.cart)

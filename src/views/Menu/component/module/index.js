@@ -1,13 +1,12 @@
 import actions from './actions';
 import mutations from './mutations';
 
-const login = {
+const submit = {
 
    state:{
-      user:[]
    },
    actions,
    mutations
 };
 
-export default login;
+export default submit;
