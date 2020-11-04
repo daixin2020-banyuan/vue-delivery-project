@@ -4,14 +4,20 @@ import _ from 'lodash';
 // import { getStorage } from '@/common/utils';
 
 const actions =  {
-
-   async getMenu ({ commit }){
-
+   /* 接收menu页面传来的商店id */
+   async getMenu ({ commit },id){
+      console.log('id',id);
       try {
          commit(types.SHOW_LOADING);
+
          await sleep(2000);
-         const data = await menu();
+
+         /* 将商店id传入请求当中 */
+         const data = await menu(id);
+         console.log('321312321',data);
+
          const menuList = renderMenu(data);
+
          commit(types.GET_MENU,menuList);
 
       } catch (error) {

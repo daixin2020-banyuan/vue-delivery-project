@@ -69,7 +69,9 @@
         "fujian": "Fujian",
         "wonton": "Wonton",
         "congee": "Congee",
-        "ramen":"Ramen"
+        "ramen":"Ramen",
+        "sichuan,bbq":"Szechuan Style BBQ",
+        "noodle,seafood":"Noodle Seafood"
       },
       "error":{
         "need-login":"Please log in first.",

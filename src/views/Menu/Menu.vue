@@ -2,10 +2,10 @@
   <div>
     <div class="menu-box">
       <div class="titleText">
-        好吃煎饼・东村
+        {{ restItem.name[`${lang}`] }}
       </div>
       <div class="sub-titleText">
-        煎饼
+        {{ $t(`tags.${restItem.tags}`) }}
       </div>
       <div class="all-category-box">
         <div
@@ -83,7 +83,10 @@ export default {
    data (){
       return{
          menu:{},
-
+         //  id:this.$route.params.id,
+         //  restName:this.$route.params.name
+         restItem:this.$route.params.restItem,
+         id:this.$route.params.restId
       };
    },
    computed:{
@@ -95,7 +98,12 @@ export default {
 
    },
    created (){
-      this.getMenu();
+      /* 由restaurantItem传来的商店id */
+      console.log('restaurant传值 item', this.$route.params.restItem);
+      console.log('restaurant传值 id', this.$route.params.restId);
+      /* 将id传入actions中 */
+      // this.getMenu(this.restItem._id);
+      this.getMenu(this.id);
    },
    methods:{
       ...mapActions([ 'getMenu' , 'setCountArray' ]),

@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div class="rest-box">
+    <div
+      class="rest-box"
+      @click="jumpdetail"
+    >
       <div class="titleText">
-        {{ item.name[`${lang}`] }}
+        {{ name }}
       </div>
       <div class="subTitleText">
         {{ $t(`tags.${item.tags}`) }}
@@ -10,7 +13,8 @@
       <div class="img-box">
         <div class="img-box1">
           <div class="rest-food-name">
-            {{ item.items[0].name[`${lang}`] }}
+            <!-- {{ item.items[0].name[`${lang}`] }} -->
+            {{ imageName0 }}
           </div>
           <div class="rest-image-box">
             <img
@@ -19,7 +23,7 @@
             >
             <img
               class="food-image"
-              :src="item.items[0].image.url"
+              :src="imageUrl0"
               style="width :100%"
             >
           </div>
@@ -29,7 +33,8 @@
               img-box2"
         >
           <div class="rest-food-name">
-            {{ item.items[1].name[`${lang}`] }}
+            <!-- 由于延迟页面刚进时可能取不到item数值 控制台会报错 所以进行非空判断 -->
+            {{ imageName1 }}
           </div>
           <div class="rest-image-box">
             <img
@@ -38,14 +43,15 @@
             >
             <img
               class="food-image"
-              :src="item.items[1].image.url"
+              :src="imageUrl1"
               style="width :100%"
             >
           </div>
         </div>
         <div class="img-box3">
           <div class="rest-food-name">
-            {{ item.items[2].name[`${lang}`] }}
+            <!-- {{ item && item.items[2] && item.items[2].name[`${lang}`] }} -->
+            {{ imageName2 }}
           </div>
           <div class="rest-image-box">
             <img
@@ -54,7 +60,7 @@
             >
             <img
               class="food-image"
-              :src="item.items[2].image.url"
+              :src="imageUrl2"
               style="width :100%"
             >
           </div>
@@ -62,11 +68,11 @@
       </div>
     </div>
   </div>
-  </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import './RestaurantItem.scss';
 import _ from 'lodash';
 
 export default {
@@ -78,162 +84,87 @@ export default {
          required:true
       }
    },
+   data (){
+      return{
+         defaultItems: [
+            {
+               name: {
+                  'zh-CN': '红烧狮子头',
+                  'en-US': 'Stewed Lion Head Chinese Meatballs'
+               },
+               image: 'https://s3.amazonaws.com/ricepo-food/image-3r7hnd04jyk7nbn3.png'
+            },
+            {
+               name:  {
+                  'zh-CN': '三杯鸡',
+                  'en-US': 'Three Cups Chicken'
+               },
+               image: 'https://s3.amazonaws.com/ricepo-food/image-5b7jxyy2jvu95frk.png'
+            },
+            {
+               name: {
+                  'zh-CN': '番茄鸡蛋面',
+                  'en-US': 'Tomato Egg Noodle'
+               },
+               image:     'https://s3.amazonaws.com/ricepo-food/image-o1bt3qsjz0fhei4.png'
+            }
+         ]
+      };
+   },
    computed:{
       ...mapState({
          lang:state=>state.language.lang
-      })
+      }),
 
+      /* 用lodash重新计算值 否则由于请求是异步操作页面进来取不到item的值会报错 */
+      name (){
+
+         return _.get(this.$props.item,`name[${this.lang}]`,'');
+      },
+      tags (){
+         return _.get(this.$props.item,`$t(tags.${this.$props.item.tags})`,'');
+      },
+
+      /* 菜品名 */
+      imageName0 (){
+
+         return _.get(this.$props.item,`items[0].name[${this.lang}]`,'');
+      },
+      imageName1 (){
+
+         return _.get(this.$props.item,`items[1].name[${this.lang}]`,'');
+      },
+      imageName2 (){
+
+         return _.get(this.$props.item,`items[2].name[${this.lang}]`,'');
+      },
+      /* 菜品图片地址 */
+      imageUrl0 (){
+         return _.get(this.$props.item,'items[0].image.url',this.defaultItems[0].image);
+      },
+      imageUrl1 (){
+         return _.get(this.$props.item,'items[1].image.url',this.defaultItems[1].image);
+      },
+      imageUrl2 (){
+         return _.get(this.$props.item,'items[2].image.url',this.defaultItems[2].image);
+      },
+   },
+   methods: {
+      /* 利用路由跳转到menu页面 并传入每个商店id和name到menu 到menu页面时rul就带上了商店id */
+      jumpdetail () {
+         console.log('222', this.item);
+         this.$router.push({
+            name: 'Menu',
+            params: {
+               /* restId要和router里menu的path后面跟的参数一致才行 */
+               restId: this.item._id,
+               /* 将点击的item传到item页面 获取商店名称和分类 */
+               restItem:this.item
+            }
+         });
+      }
    }
 
 };
 </script>
 
-<style lang="scss">
-.rest-box{
-    min-width : 250px;
-    max-width : 250px;
-    min-height : 440px;
-    max-height : 600px;
-    padding : 20px;
-    margin-bottom : 91px;
-    -webkit-column-break-inside : avoid;
-     background-color :#f7f7f7;
-        .titleText{
-            font-family : PingFangSC-Regular;
-            font-size : 30px;
-            font-style : normal;
-            font-weight : 600;
-            font-stretch : normal;
-            color : #202020;
-            letter-spacing : normal;
-            cursor : pointer;
-        }
-        .subTitleText{
-            width : 220px;
-            height : 24px;
-            font-family : PingFangSC-Regular;
-            font-size : 16px;
-            font-style : normal;
-            font-weight : 400;
-            font-stretch : normal;
-            line-height : 1.5;
-            color : #797979;
-            letter-spacing : normal;
-        }
-        .img-box{
-            position : relative;
-            min-height : 285px;
-            max-height : 435px;
-            padding-bottom : 20px;
-            margin-top : 10px;
-            cursor : pointer;
-            .img-box1{
-                width : 65.2%;
-                cursor : pointer;
-                .rest-food-name{
-                        width : 100%;
-                        height : auto;
-                        font-family : PingFangSC-Regular;
-                        font-size : 14px;
-                        font-style : normal;
-                        font-weight : 400;
-                        font-stretch : normal;
-                        line-height : 1;
-                        color : #afafaf;
-                        text-align : center;
-                        letter-spacing : normal;
-                        word-break : break-all;
-                        word-wrap : break-word;
-                        cursor : pointer;
-                        opacity : 1;
-                }
-                 .rest-image-box{
-                    position : relative;
-                    margin-top : 10px;
-                    .dish-image{
-                        position : absolute;
-                        z-index : 1;
-                        width :162px;
-                        height : 212px;
-                    }
-                 }
-            }
-            .img-box2{
-                position : absolute;
-                top : 140px;
-                left : 45.6%;
-                width : 40.9%;
-                .rest-food-name{
-                    width : 100%;
-                        height : auto;
-                        font-family : PingFangSC-Regular;
-                        font-size : 14px;
-                        font-style : normal;
-                        font-weight : 400;
-                        font-stretch : normal;
-                        line-height : 1;
-                        color : #afafaf;
-                        text-align : center;
-                        letter-spacing : normal;
-                        word-break : break-all;
-                        word-wrap : break-word;
-                        cursor : pointer;
-                        opacity : 1;
-                }
-                .rest-image-box{
-                    position : relative;
-                    margin-top : 10px;
-                    .dish-image1{
-                        position : absolute;
-                        z-index : 1;
-                        width :102px;
-                        height : 132px;
-                    }
-                }
-            }
-            .img-box3{
-                position : relative;
-                top : 190px;
-                left : 22px;
-                width : 32.6%;
-                .rest-food-name{
-                        width : 100%;
-                        height : auto;
-                        font-family : PingFangSC-Regular;
-                        font-size : 14px;
-                        font-style : normal;
-                        font-weight : 400;
-                        font-stretch : normal;
-                        line-height : 1;
-                        color : #afafaf;
-                        text-align : center;
-                        letter-spacing : normal;
-                        word-break : break-all;
-                        word-wrap : break-word;
-                        cursor : pointer;
-                        opacity : 1;
-                }
-                .rest-image-box{
-                    position : relative;
-                    margin-top : 10px;
-                    .dish-image1{
-                        position : absolute;
-                        z-index : 1;
-                        width :81px;
-                        height : 105px;
-                    }
-                }
-            }
-
-        }
-    }
-    .rest-box:hover{
-        background-color :#f7f7f7;
-        border-radius :10px;
-        box-shadow :0 2px 10px 0 hsla(0, 0%, 81.6%, .5)
-    }
-    .food-image {
-    position : absolute;
-    z-index : 2;
-    }
-</style>

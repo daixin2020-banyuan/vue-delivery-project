@@ -27,7 +27,8 @@ const routes = [
       component: () =>import('../views/Order/Order.vue')
    },
    {
-      path:'/menu',
+
+      path:'/menu/:restId',
       name:'Menu',
       component: () =>import('../views/Menu/Menu.vue')
    },

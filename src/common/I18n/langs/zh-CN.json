@@ -69,7 +69,9 @@
         "fujian": "福建菜",
         "wonton": "馄饨",
         "congee": "粥",
-        "ramen":"拉面"
+        "ramen":"拉面",
+        "sichuan,bbq":"川菜 烤串",
+        "noodle,seafood":"面类 海鲜"
       },
       "error":{
         "need-login":"您需要先登录。",

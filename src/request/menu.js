@@ -3,8 +3,9 @@ import { host } from '../common/config';
 
 export async function menu (data){
 
+   console.log('aaa', data);
    const result = await request({
-      url:`${host}/menu/restaurantId/59879867376b1e0011183f83`,
+      url:`${host}/menu/restaurantId/${data}`,
       method:  'get',
       data
 
