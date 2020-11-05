@@ -66,7 +66,7 @@
         </div>
       </div>
     </div>
-    <Cart></Cart>
+    <Cart>123</Cart>
   </div>
 </template>
 
