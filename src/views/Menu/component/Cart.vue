@@ -20,7 +20,7 @@
                 ref="alipay"
                 type="radio"
                 name="light"
-                checked
+                :checked="value === 'alipay' ? true :false"
                 @click="paymentMethod('alipay')"
               >
               <span class="design"></span>
@@ -34,6 +34,7 @@
                 ref="wechat"
                 type="radio"
                 name="light"
+                :checked="value === 'wechat' ? true :false"
                 @click="paymentMethod('wechat')"
               >
               <span class="design"></span>
@@ -47,6 +48,7 @@
                 ref="applePay"
                 type="radio"
                 name="light"
+                :checked="value === 'applePay' ? true :false"
                 @click="paymentMethod('applePay')"
               >
               <span class="design"></span>
@@ -181,7 +183,7 @@ export default {
    data (){
       return{
          flagShow: false,
-         value:  'alipay' || getStorage('payment').value
+         value: getStorage('payment').value || 'alipay'
       };
    },
    computed:{
@@ -195,7 +197,7 @@ export default {
          const orderItems = _(this.count)
             .uniq(i=>i._id)
             .value();
-
+         console.log(this.value);
          return orderItems;
 
       },
@@ -237,6 +239,7 @@ export default {
       },
       paymentMethod (value){
          this.value = value;
+         setStorage('payment',{ value:this.value });
 
       },
       closePayment (){
@@ -273,7 +276,7 @@ export default {
                res();
             },time);
          });
-      }
+      },
 
    }
 
