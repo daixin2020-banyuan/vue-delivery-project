@@ -81,7 +81,7 @@ export default {
    data (){
       return{
          isShow:false,
-         language:'zh-CN',
+         language:getStorage('language') || 'zh-CN',
          /* 设置是否登陆状态属性 分别显示profile */
          isLogin:true,
          isLogout:false,

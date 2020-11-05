@@ -16,6 +16,8 @@ import regist from '../components/modal/registModal/module';
 /* restaurant */
 import restList from '../views/Restaurant/module';
 
+import restTitle from './restaurantTitle';
+
 /* menu */
 import menu from '@/views/Menu/module/index';
 
@@ -42,7 +44,8 @@ export default new Vuex.Store({
       language,
       order,
       regist,
-      restList
+      restList,
+      restTitle
 
    }
 });

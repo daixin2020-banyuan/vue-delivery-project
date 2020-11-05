@@ -80,6 +80,7 @@ import { mapState } from 'vuex';
 import './RestaurantItem.scss';
 import _ from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
+import { mapActions } from 'vuex';
 
 export default {
    name:'RestaurantAssembly',
@@ -125,7 +126,6 @@ export default {
 
       /* 用lodash重新计算值 否则由于请求是异步操作页面进来取不到item的值会报错 */
       name (){
-
          return _.get(this.$props.item,`name[${this.lang}]`,'');
       },
       tags (){
@@ -166,18 +166,25 @@ export default {
       },
    },
    methods: {
+      ...mapActions([ 'setTitle' ]),
       /* 利用路由跳转到menu页面 并传入每个商店id和name到menu 到menu页面时rul就带上了商店id */
       jumpdetail () {
-         console.log('222', this.item);
+
          this.$router.push({
             name: 'Menu',
             params: {
                /* restId要和router里menu的path后面跟的参数一致才行 */
                restId: this.item._id,
                /* 将点击的item传到item‘页面 */
-               restItem:this.item
+               //  restItem:this.item
             }
          });
+         let data = {
+            title:this.$props.item.name,
+            tags : this.$props.item.tags
+         };
+         this.setTitle(data);
+
       }
    }
 

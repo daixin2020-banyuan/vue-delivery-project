@@ -3,11 +3,16 @@
     <div class="menu-box">
       <div class="titleText">
         <!-- {{ restItem.name[`${lang}`] }} -->
-        {{ name }}
+        {{ name.title[`${lang}`] }}
       </div>
       <div class="sub-titleText">
-        {{ $t(`tags.${restItem.tags}`) }}
-        <!-- 123131 -->
+        <!-- {{ $t(`tags.${restItem.tags}`) }} -->
+        <div
+          v-for="i in restTags"
+          :key="i.id"
+        >
+          {{ i.tag }}
+        </div>
       </div>
       <div class="all-category-box">
         <div
@@ -70,6 +75,7 @@ import Cart from './component/Cart';
 import {  mapActions ,mapState } from 'vuex';
 import { setStorage  } from '@/common/utils.js';
 import _ from 'lodash';
+import { v4 as uuidv4 } from 'uuid';
 
 import './menu.scss';
 
@@ -97,10 +103,25 @@ export default {
          menuList: state=>state.menu.menuList,
          lang:state=>state.language.lang,
          count:state=>state.menu.count,
-         name (){
-            return _.get(this.restItem,`name[${this.lang}]`,'');
-         }
+         name:state=>state.restTitle.name
       }),
+      /* 用lodash重新计算值 否则由于请求是异步操作页面进来取不到item的值会报错 */
+      restName (){
+         console.log('this.name.title=====>',this.name.title);
+         return _.get(this.name.title,`name[${this.lang}]`,'');
+      },
+      restTags (){
+         let restTags = [];
+         /* tags是一个数组 遍历tags 根据语言变化 */
+         _.forEach(this.name.tags,(item)=>{
+            restTags.push({
+               tag: this.$t(`tags.${item}`),
+               id: uuidv4()
+            });
+         });
+         return restTags;
+
+      },
 
    },
    created (){

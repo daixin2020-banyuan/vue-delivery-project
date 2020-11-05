@@ -30,6 +30,7 @@
 
 import RestaurantItem from '../../components/RestaurantItem/RestaurantItem';
 import { mapState , mapActions } from 'vuex';
+import { checkRestaurantClosed } from '../../common/utils';
 
 import _ from 'lodash';
 
@@ -47,8 +48,20 @@ export default {
 
       /* 重构restList 按需求排序*/
       newRestList (){
-         const newRestList = this.restList;
-         return  _.orderBy(newRestList,[ 'featured','zscore' ], [ 'desc','desc' ] );
+         const newRestList = _.orderBy(this.restList,[ 'featured','zscore' ], [ 'desc','desc' ] );
+
+         /* 根据开关门排序 */
+         const openedRestaurant = [];
+         const closedRestaurant = [];
+         _.forEach(newRestList,(item)=>{
+            /* 验证餐馆是否关闭 */
+            if(checkRestaurantClosed(item)){
+               openedRestaurant.push(item);
+            }else{
+               closedRestaurant.push(item);
+            }
+         });
+         return _.concat(openedRestaurant, closedRestaurant);
       },
 
       /* 将排序好的数组遍历后按照index奇偶分成两列新数组 */

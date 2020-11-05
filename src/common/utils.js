@@ -1,5 +1,6 @@
 /* 引入加密依赖 */
 import crypto from 'crypto';
+import moment from 'moment-timezone';
 
 export function setStorage (key, data) {
    if(!key) return;
@@ -51,4 +52,33 @@ export function checkconfirmPassword (password){
    const pattern = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/;
 
    return pattern.test(password);
+}
+
+/* 验证餐馆是否关闭 */
+export function checkRestaurantClosed (restaurant){
+   const date = new Date();
+   /* 纽约时间 */
+   const timezone = _.get(restaurant, 'timezone');
+   const currentTime = moment.tz(date, timezone);
+   const newYorkTime = currentTime.hours() * 60 + currentTime.minutes();
+   /* 星期几 */
+   const currentWeek = currentTime.day();
+   /* 营业时间 */
+   const index = currentWeek - 1;
+   const bankingHour = _.get(restaurant,`hours[${index}]`);
+   /* 开始时间 */
+   const startHour = _.get(bankingHour, 'start');
+   /* 结束时间 */
+   const endHour = _.get(bankingHour, 'end');
+   /* 是否在营业时间 */
+   if (newYorkTime > endHour || newYorkTime < startHour) {
+      return false;
+   }
+   /* 是否人为关闭 */
+   const closed = _.get(restaurant, 'closed', null);
+   if (closed !== null) {
+      return false;
+   }
+   return true;
+
 }
