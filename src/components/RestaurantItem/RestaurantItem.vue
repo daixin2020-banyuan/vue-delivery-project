@@ -8,7 +8,12 @@
         {{ name }}
       </div>
       <div class="subTitleText">
-        {{ $t(`tags.${item.tags}`) }}
+        <div
+          v-for="restTags in tags"
+          :key="restTags.id"
+        >
+          {{ restTags.tag }}
+        </div>
       </div>
       <div class="img-box">
         <div class="img-box1">
@@ -74,6 +79,7 @@
 import { mapState } from 'vuex';
 import './RestaurantItem.scss';
 import _ from 'lodash';
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
    name:'RestaurantAssembly',
@@ -122,21 +128,30 @@ export default {
          return _.get(this.$props.item,`name[${this.lang}]`,'');
       },
       tags (){
-         return _.get(this.$props.item,`$t(tags.${this.$props.item.tags})`,'');
+         let restTags = [];
+         /* tags是一个数组 遍历tags 根据语言变化 */
+         _.forEach(this.$props.item.tags,(item)=>{
+            restTags.push({
+               tag: this.$t(`tags.${item}`),
+               id: uuidv4()
+            });
+         });
+         return restTags;
+
       },
 
       /* 菜品名 */
       imageName0 (){
 
-         return _.get(this.$props.item,`items[0].name[${this.lang}]`,'');
+         return _.get(this.$props.item,`items[0].name[${this.lang}]`,this.defaultItems[0].name[`${this.lang}`]);
       },
       imageName1 (){
 
-         return _.get(this.$props.item,`items[1].name[${this.lang}]`,'');
+         return _.get(this.$props.item,`items[1].name[${this.lang}]`,this.defaultItems[1].name[`${this.lang}`]);
       },
       imageName2 (){
 
-         return _.get(this.$props.item,`items[2].name[${this.lang}]`,'');
+         return _.get(this.$props.item,`items[2].name[${this.lang}]`,this.defaultItems[2].name[`${this.lang}`]);
       },
       /* 菜品图片地址 */
       imageUrl0 (){
@@ -158,7 +173,7 @@ export default {
             params: {
                /* restId要和router里menu的path后面跟的参数一致才行 */
                restId: this.item._id,
-               /* 将点击的item传到item页面 获取商店名称和分类 */
+               /* 将点击的item传到item‘页面 */
                restItem:this.item
             }
          });

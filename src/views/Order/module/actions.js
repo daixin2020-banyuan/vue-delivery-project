@@ -1,6 +1,6 @@
 
 import * as types from '../../../store/mutation-types';
-import { order }from '@/request/order';
+import { order }from '@/Request/order';
 import { getStorage } from '../../../common/utils';
 import router from '../../../router/index';
 
@@ -11,7 +11,7 @@ const actions = {
 
             commit(types.SHOW_LOADING);
 
-            await sleep(10000);
+            await sleep(2000);
 
             const id = getStorage('user')._id;
 

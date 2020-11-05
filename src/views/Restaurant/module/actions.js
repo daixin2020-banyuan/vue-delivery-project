@@ -1,6 +1,6 @@
 
-import * as types from '../../../store/mutation-types';
-import { rest } from '../../../request/restaurant';
+import * as types from '@/store/mutation-types';
+import { rest } from '@/Request/restaurant';
 
 const actions =  {
 
@@ -13,7 +13,7 @@ const actions =  {
 
          const data = await rest();
 
-         console.log(data);
+         console.log('restaurant======>',data);
 
          commit(types.GET_REST,data);
 

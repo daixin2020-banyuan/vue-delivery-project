@@ -1,6 +1,6 @@
 
 import * as types from '../../../../store/mutation-types';
-import { register }from '@/request/register';
+import { register }from '@/Request/register';
 import { encode } from '../../../../common/utils';
 
 // import { order } from '../../../request/order';

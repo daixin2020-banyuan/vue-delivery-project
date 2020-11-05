@@ -1,5 +1,5 @@
 import * as types from '@/store/mutation-types';
-import { submit } from '@/request/submit';
+import { submit } from '@/Request/submit';
 
 import { getStorage ,cleanStorage } from '@/common/utils';
 

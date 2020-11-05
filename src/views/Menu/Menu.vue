@@ -2,10 +2,12 @@
   <div>
     <div class="menu-box">
       <div class="titleText">
-        {{ restItem.name[`${lang}`] }}
+        <!-- {{ restItem.name[`${lang}`] }} -->
+        {{ name }}
       </div>
       <div class="sub-titleText">
-        {{ $t(`tags.${restItem.tags}`) }}
+        <!-- {{ $t(`tags.${restItem.tags}`) }} -->
+        123131
       </div>
       <div class="all-category-box">
         <div
@@ -61,15 +63,16 @@
     </div>
     <Cart></Cart>
   </div>
-  </div>
 </template>
 
 <script>
 import Cart from './component/Cart';
 import {  mapActions ,mapState } from 'vuex';
 import { setStorage  } from '@/common/utils.js';
+import _ from 'lodash';
 
 import './menu.scss';
+
 export default {
    name:'Menu',
    filters: {
@@ -84,16 +87,19 @@ export default {
       return{
          menu:{},
          //  id:this.$route.params.id,
-         //  restName:this.$route.params.name
          restItem:this.$route.params.restItem,
-         id:this.$route.params.restId
+         id:this.$route.params.restId,
+         //  name: this.restItem.name
       };
    },
    computed:{
       ...mapState({
          menuList: state=>state.menu.menuList,
          lang:state=>state.language.lang,
-         count:state=>state.menu.count
+         count:state=>state.menu.count,
+         name (){
+            return _.get(this.$route.params.restItem,`name[${this.lang}]`,'');
+         }
       }),
 
    },
@@ -105,6 +111,7 @@ export default {
       // this.getMenu(this.restItem._id);
       this.getMenu(this.id);
    },
+
    methods:{
       ...mapActions([ 'getMenu' , 'setCountArray' ]),
       addCount (i){

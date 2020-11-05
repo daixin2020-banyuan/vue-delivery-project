@@ -2,7 +2,7 @@
   <div>
     <div class="containerBetween">
       <div class="rest-tab">
-        所有餐馆
+        {{ $t("restaurant.allRestaurant") }}
         <div class="rectangle"></div>
       </div>
       <div class="all-rest-box">
@@ -33,7 +33,6 @@ import { mapState , mapActions } from 'vuex';
 
 import _ from 'lodash';
 
-import '../../style/style.scss';
 import './restaurant.scss';
 
 export default {

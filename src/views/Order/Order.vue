@@ -3,7 +3,7 @@
     <div class="containerBetween container-row">
       <div class="order-tab">
         <div class="order-tab-fixed">
-          历史订单
+          {{ $t("order.title") }}
           <div class="rectangle"></div>
         </div>
       </div>

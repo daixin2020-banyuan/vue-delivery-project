@@ -1,5 +1,5 @@
 import * as types from '@/store/mutation-types';
-import { login } from '@/request/login';
+import { login } from '@/Request/login';
 import { encode } from '../../../common/utils';
 /* 在js文件中进行路由操作需要引进 */
 import  router  from '../../../router/index';
