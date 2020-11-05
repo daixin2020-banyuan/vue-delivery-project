@@ -163,6 +163,7 @@ export default {
          /* 取消事件默认行为 */
          e.preventDefault();
          this.changeStyle = true;
+         //  this.changeStyle = !this.changeStyle;
          /* 添加handleOut鼠标事件 */
          document.addEventListener('click', this.handleOut, true);
          console.log('change',this.changeStyle);
