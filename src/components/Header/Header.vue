@@ -124,14 +124,15 @@ export default {
 
          if(getStorage('user')){
             if(this.$route.name === 'Login' ){
-               this.isLogin = false;
+               this.isLogin = true;
             }else if(this.$route.name === 'Restaurant'){
                this.orderLogin = true;
                this.isLogout = true;
             }else if(this.$route.name === 'Order'){
+               this.orderLogin = false;
                this.isLogout = true;
-            }else if(this.$route.name != 'Login' || this.$route.name != 'Restaurant' || this.$route.name != 'Order'){
-               this.orderLogin = true;
+            }else if(this.$route.name !== 'Login' || this.$route.name !== 'Restaurant' || this.$route.name !== 'Order'){
+               //  this.orderLogin = true;
                this.isLogout = true;
             }
          }else{
