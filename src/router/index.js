@@ -7,7 +7,8 @@ const routes = [
    {
       path: '/',
       name: 'Home',
-      redirect:'/restaurant'
+      redirect:'/restaurant',
+      component: () =>import('../views/Restaurant/Restaurant.vue')
    },
    {
       path:'/login',

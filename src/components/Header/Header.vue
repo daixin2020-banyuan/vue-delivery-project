@@ -126,6 +126,7 @@ export default {
             if(this.$route.name === 'Login' ){
                this.isLogin = true;
             }else if(this.$route.name === 'Restaurant'){
+               this.isLogin = true;
                this.orderLogin = true;
                this.isLogout = true;
             }else if(this.$route.name === 'Order'){
