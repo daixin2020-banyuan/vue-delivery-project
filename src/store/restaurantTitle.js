@@ -4,7 +4,8 @@ const restTitle = {
    state: {
       name:{
          title:{},
-         tags:[]
+         tags:[],
+         restId:{}
       }
 
    },
@@ -12,6 +13,7 @@ const restTitle = {
       [types.SET_NAME] (state, data) {
          state.name.title = data.title;
          state.name.tags = data.tags;
+         state.name.restId = data.restId;
          console.log('00--0-0-0-0-0-0',state);
 
       },

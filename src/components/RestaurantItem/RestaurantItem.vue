@@ -76,11 +76,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import './RestaurantItem.scss';
 import _ from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
-import { mapActions } from 'vuex';
+import { mapActions,mapState } from 'vuex';
+import { cleanStorage,setStorage }from '@/common/utils.js';
 
 export default {
    name:'RestaurantAssembly',
@@ -121,7 +121,8 @@ export default {
    },
    computed:{
       ...mapState({
-         lang:state=>state.language.lang
+         lang:state=>state.language.lang,
+         restName:state=>state.restTitle.name
       }),
 
       /* 用lodash重新计算值 否则由于请求是异步操作页面进来取不到item的值会报错 */
@@ -166,10 +167,10 @@ export default {
       },
    },
    methods: {
-      ...mapActions([ 'setTitle' ]),
+      ...mapActions([ 'setTitle' ,'clearCountArray' ]),
       /* 利用路由跳转到menu页面 并传入每个商店id和name到menu 到menu页面时rul就带上了商店id */
       jumpdetail () {
-
+         setStorage('cartId',this.item._id);
          this.$router.push({
             name: 'Menu',
             params: {
@@ -179,9 +180,14 @@ export default {
                //  restItem:this.item
             }
          });
+         if(this.item._id !== this.restName.restId){
+            cleanStorage('cart');
+            this.clearCountArray();
+         }
          let data = {
             title:this.$props.item.name,
-            tags : this.$props.item.tags
+            tags : this.$props.item.tags,
+            restId:this.item._id
          };
          this.setTitle(data);
 

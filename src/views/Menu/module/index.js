@@ -7,8 +7,7 @@ const menu = {
    state:{
       menuList :  getStorage('menuList') || {} ,
       count:  getStorage('cart') || []
-      // menuList:{},
-      // count:[]
+
    },
    actions,
    mutations

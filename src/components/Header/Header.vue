@@ -101,8 +101,8 @@ export default {
          this.isShow = true;
          /* 添加handleOut鼠标事件 */
          document.addEventListener('click', this.handleOut, true);
-         console.log('isShow',this.isShow);
-         console.log(this.$route.name);
+         //  console.log('isShow',this.isShow);
+         //  console.log(this.$route.name);
 
          this.changeBox();
 
@@ -112,7 +112,7 @@ export default {
 
          const ref = this.$refs.dropBox;
          if (ref && !ref.contains(e.target)) {
-            console.log('123');
+            // console.log('123');
             this.isShow = false;
             document.removeEventListener('click',this.handleOut,true);
          }
@@ -120,7 +120,7 @@ export default {
 
       /* 根据路由名称改变drop down样式 */
       changeBox (){
-         console.log('$route',this.$route);
+         //  console.log('$route',this.$route);
 
          if(getStorage('user')){
             if(this.$route.name === 'Login' ){

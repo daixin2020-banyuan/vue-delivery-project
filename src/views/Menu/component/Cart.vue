@@ -186,7 +186,6 @@ export default {
    },
    computed:{
       ...mapState({
-         menuList: state=>state.menu.menuList,
          lang:state=>state.language.lang,
          count:state=>state.menu.count
 
@@ -196,15 +195,6 @@ export default {
          const orderItems = _(this.count)
             .uniq(i=>i._id)
             .value();
-         //  if(getStorage('cart')){
-         //     if(orderItems == ''){
-         //        return getStorage('cart');
-         //     }else{
-         //        return orderItems;
-         //     }
-         //  }else{
-         //     return orderItems;
-         //  }
 
          return orderItems;
 

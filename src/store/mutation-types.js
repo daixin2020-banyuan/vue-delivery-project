@@ -12,6 +12,8 @@ export const DEL_COUNTARRAY = 'DEL_COUNTARRAY';
 
 export const SUBMIT_ORDER = 'SUBMIT_ORDER';
 
+export const CLEAR_COUNTARRAY = 'CLEAR_COUNTARRAY';
+
 /* language */
 export const SET_LANGUAGE = 'SET_LANGUAGE';
 /* registUser */

@@ -13,13 +13,13 @@ const actions =  {
 
          const data = await rest();
 
-         console.log('restaurant======>',data);
+         // console.log('restaurant======>',data);
 
          commit(types.GET_REST,data);
 
       } catch (error) {
 
-         console.log(error);
+         this._vm.$modal.show('errorshow',{ message:error.message });
       }finally{
          commit(types.HIDE_LOADING);
       }

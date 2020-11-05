@@ -88,8 +88,8 @@ export default {
 
    updated (){
 
-      console.log('updated');
-      console.log('rest',this.splitList);
+      // console.log('updated');
+      // console.log('rest',this.splitList);
    },
    methods:{
       ...mapActions([ 'getRest' ])

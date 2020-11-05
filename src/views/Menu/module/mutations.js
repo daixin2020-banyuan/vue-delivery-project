@@ -11,6 +11,9 @@ const mutations = {
    },
    [types.DEL_COUNTARRAY] (state,index){
       state.count.splice(index,1);
+   },
+   [types.CLEAR_COUNTARRAY] (state,data){
+      state.count = data;
    }
 
 };

@@ -6,7 +6,7 @@ import _ from 'lodash';
 const actions =  {
    /* 接收menu页面传来的商店id */
    async getMenu ({ commit },id){
-      console.log('id',id);
+      // console.log('id',id);
       try {
          commit(types.SHOW_LOADING);
 
@@ -14,7 +14,6 @@ const actions =  {
 
          /* 将商店id传入请求当中 */
          const data = await menu(id);
-         console.log('321312321',data);
 
          const menuList = renderMenu(data);
 
@@ -29,8 +28,8 @@ const actions =  {
    },
 
    setCountArray ({ commit },data){
-      // if(getStorage('cart')){
-      //    data = getStorage('cart');
+      // if(!getStorage('cart')){
+      //    data = [];
       // }
       commit(types.SET_COUNTARRAY, data);
    },
@@ -38,6 +37,10 @@ const actions =  {
 
       commit(types.DEL_COUNTARRAY, index);
    },
+   clearCountArray ({ commit }){
+      let data = [];
+      commit(types.CLEAR_COUNTARRAY,data);
+   }
 
 };
 

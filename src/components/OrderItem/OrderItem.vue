@@ -135,7 +135,7 @@ export default {
             total += item.price / 100;
          });
 
-         console.log('total=======>',total);
+         //  console.log('total=======>',total);
 
          return total;
 
@@ -145,7 +145,7 @@ export default {
       //   console.log('1312321313',this.item);
    },
    mounted (){
-      console.log('mounted',this.orderItems);
+      // console.log('mounted',this.orderItems);
    },
    methods:{
       //   change (item,finalarr){

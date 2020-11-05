@@ -107,7 +107,7 @@ export default {
       }),
       /* 用lodash重新计算值 否则由于请求是异步操作页面进来取不到item的值会报错 */
       restName (){
-         console.log('this.name.title=====>',this.name.title);
+         //  console.log('this.name.title=====>',this.name.title);
          return _.get(this.name.title,`name[${this.lang}]`,'');
       },
       restTags (){
@@ -126,9 +126,9 @@ export default {
    },
    created (){
       /* 由restaurantItem传来的商店id */
-      console.log('restaurant传值 item', this.$route.params.restItem);
-      console.log('restaurant传值 id', this.$route.params.restId);
-      console.log('restaurant传值 id123131', this.restItem);
+      // console.log('restaurant传值 item', this.$route.params.restItem);
+      // console.log('restaurant传值 id', this.$route.params.restId);
+      // console.log('restaurant传值 id123131', this.restItem);
       /* 将id传入actions中 */
       // this.getMenu(this.restItem._id);
       this.getMenu(this.id);
@@ -137,7 +137,6 @@ export default {
    methods:{
       ...mapActions([ 'getMenu' , 'setCountArray' ]),
       addCount (i){
-         setStorage('cartId',i._id);
          setStorage('cart',this.count);
          setStorage('menuList',this.menuList);
          if(i.available === true){
