@@ -73,7 +73,7 @@
 <script>
 
 import './Header.scss';
-import { getStorage ,setStorage } from '../../common/utils';
+import { getStorage  } from '../../common/utils';
 import { mapActions }from'vuex';
 
 export default {

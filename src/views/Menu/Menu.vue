@@ -6,8 +6,8 @@
         {{ name }}
       </div>
       <div class="sub-titleText">
-        <!-- {{ $t(`tags.${restItem.tags}`) }} -->
-        123131
+        {{ $t(`tags.${restItem.tags}`) }}
+        <!-- 123131 -->
       </div>
       <div class="all-category-box">
         <div
@@ -98,7 +98,7 @@ export default {
          lang:state=>state.language.lang,
          count:state=>state.menu.count,
          name (){
-            return _.get(this.$route.params.restItem,`name[${this.lang}]`,'');
+            return _.get(this.restItem,`name[${this.lang}]`,'');
          }
       }),
 
@@ -107,6 +107,7 @@ export default {
       /* 由restaurantItem传来的商店id */
       console.log('restaurant传值 item', this.$route.params.restItem);
       console.log('restaurant传值 id', this.$route.params.restId);
+      console.log('restaurant传值 id123131', this.restItem);
       /* 将id传入actions中 */
       // this.getMenu(this.restItem._id);
       this.getMenu(this.id);
