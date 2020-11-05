@@ -19,7 +19,7 @@
             <div
               class="rest-food-name"
             >
-              {{ foodName }}
+              {{ foodName[`${lang}`] }}
             </div>
             <div class="rest-image-box">
               <img
@@ -94,6 +94,13 @@ export default {
          restList:state=>state.restList.restList,
          lang:state=>state.language.lang,
       }),
+      foodName (){
+         let a = this.restList.forEach(i => {
+            _.get(i,'items[0].name',this.defaultItems[0].name);
+
+         });
+         return a;
+      }
 
    },
    created (){
