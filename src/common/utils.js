@@ -1,6 +1,7 @@
 /* 引入加密依赖 */
 import crypto from 'crypto';
 import moment from 'moment-timezone';
+import _ from 'lodash';
 
 export function setStorage (key, data) {
    if(!key) return;
