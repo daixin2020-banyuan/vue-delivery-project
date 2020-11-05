@@ -41,11 +41,20 @@ const router = new VueRouter({
    routes
 });
 
-// 路由守卫 检测在未登录状态下进入非login和restaurant页面的话跳转restaurant
+// 路由守卫 检测在登陆情况下无法进入login页面
 router.beforeEach((to,from,next) => {
-
-   if(to.name != 'Login' && to.name != 'Restaurant' && to.name != 'Menu'){
-      const isLogin = localStorage.getItem('user') || '';
+   const isLogin = localStorage.getItem('user');
+   // 检测跳往login页面是否登陆 如果登陆跳转到restaurant
+   if(to.name == 'Login'){
+      if(isLogin){
+         next({
+            name:'Restaurant'
+         });
+      }else {
+         next();
+      }
+      // 检测跳往order页面是否登陆 未登录跳转到restaurant
+   }else if(to.name == 'Order'){
       if(!isLogin){
          next({
             name:'Restaurant'
@@ -53,6 +62,7 @@ router.beforeEach((to,from,next) => {
       }else{
          next();
       }
+
    }else{
       next();
    }

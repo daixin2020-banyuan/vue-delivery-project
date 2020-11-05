@@ -56,7 +56,7 @@
 import { checkName,checkPassword } from '../../../common/utils.js';
 import { mapActions } from 'vuex';
 
-// import './registModal.scss';
+import './registModal.scss';
 export default {
    name:'RegistModal',
    data (){
