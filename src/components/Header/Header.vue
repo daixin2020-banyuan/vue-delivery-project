@@ -156,7 +156,8 @@ export default {
          });
       },
       logout (){
-         localStorage.removeItem('user');
+         /* 清除localStorage所有值 */
+         localStorage.clear();
 
          /* 移除后 改变状态 */
          this.isLogin = false;

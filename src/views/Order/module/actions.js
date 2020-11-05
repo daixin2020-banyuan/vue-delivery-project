@@ -8,7 +8,11 @@ const actions = {
    async getOrder ({ commit }){
       try {
          if(getStorage('user')){
+
             commit(types.SHOW_LOADING);
+
+            await sleep(2000);
+
             const id = getStorage('user')._id;
 
             const list = await order(id);
@@ -31,5 +35,15 @@ const actions = {
       }
    }
 };
+
+function sleep (time){
+
+   return new Promise((res)=>{
+
+      setTimeout(()=>{
+         res();
+      },time);
+   });
+}
 
 export default actions;

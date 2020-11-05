@@ -26,3 +26,5 @@ export const GET_USER = 'GET_USER';
 /* restaurant */
 export const GET_REST = 'GET_REST';
 
+export const SET_NAME = 'SET_NAME';
+

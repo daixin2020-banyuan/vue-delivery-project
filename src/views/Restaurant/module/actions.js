@@ -7,10 +7,14 @@ const actions =  {
    async getRest ({ commit }){
 
       try {
+         commit(types.SHOW_LOADING);
+
+         await sleep(2000);
 
          const data = await rest();
 
          console.log('restaurant======>',data);
+
          commit(types.GET_REST,data);
 
       } catch (error) {
@@ -21,5 +25,15 @@ const actions =  {
       }
    },
 };
+
+function sleep (time){
+
+   return new Promise((res)=>{
+
+      setTimeout(()=>{
+         res();
+      },time);
+   });
+}
 
 export default actions;

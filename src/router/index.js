@@ -18,7 +18,7 @@ const routes = [
    {
       path:'/restaurant',
       name:'Restaurant',
-      component: () =>import('@/views/Restaurant/Restaurant.vue')
+      component: () =>import('../views/Restaurant/Restaurant.vue')
    }
    ,
    {
@@ -27,7 +27,8 @@ const routes = [
       component: () =>import('../views/Order/Order.vue')
    },
    {
-      path:'/menu',
+      /* restId需要和传值的变量名一致 */
+      path:'/menu/:restId',
       name:'Menu',
       component: () =>import('../views/Menu/Menu.vue')
    },
@@ -40,4 +41,22 @@ const router = new VueRouter({
    routes
 });
 
+// 路由守卫 检测在未登录状态下进入非login和restaurant页面的话跳转restaurant
+router.beforeEach((to,from,next) => {
+
+   if(to.name != 'Login' && to.name != 'Restaurant' && to.name != 'Menu'){
+      const isLogin = localStorage.getItem('user') || '';
+      if(!isLogin){
+         next({
+            name:'Restaurant'
+         });
+      }else{
+         next();
+      }
+   }else{
+      next();
+   }
+});
+
 export default router;
+

@@ -13,7 +13,7 @@
       <div class="containerRowAlign">
         <div class="containerRowAlign-select">
           <section class="light">
-            <h1>请选择支付方式</h1>
+            <h1>{{ $t("menu.choose-payment") }}</h1>
 
             <label style="margin-top :20px">
               <input
@@ -117,14 +117,14 @@
         v-else
         class="cart-empty-text"
       >
-        选择加入购物车
+        {{ $t("menu.cartTitle") }}
       </div>
 
       <div
         v-show="flagShow === true"
         class="menu-cart-total"
       >
-        <div> 总价: </div>
+        <div> {{ $t("menu.total") }}: </div>
         <div>
           {{ totalPrice | formatPrice }}
         </div>
@@ -144,7 +144,7 @@
           class="menu-cart-subtotal-btn"
           @click="confirmPayment"
         >
-          确认下单
+          {{ $t("menu.place-order") }}
         </button>
         <button
           v-else
