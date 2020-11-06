@@ -80,6 +80,7 @@ import './RestaurantItem.scss';
 import _ from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
 import { mapActions,mapState } from 'vuex';
+import * as types from '@/store/mutation-types.js';
 import { cleanStorage,setStorage }from '@/common/utils.js';
 
 export default {
@@ -167,7 +168,7 @@ export default {
       },
    },
    methods: {
-      ...mapActions([ 'setTitle' ,'clearCountArray' ]),
+      ...mapActions([ 'setTitle'  ]),
       /* 利用路由跳转到menu页面 并传入每个商店id和name到menu 到menu页面时rul就带上了商店id */
       jumpdetail () {
          setStorage('cartId',this.item._id);
@@ -182,7 +183,7 @@ export default {
          });
          if(this.item._id !== this.restName.restId){
             cleanStorage('cart');
-            this.clearCountArray();
+            this.$store.commit(types.CLEAR_CART);
          }
          let data = {
             title:this.$props.item.name,

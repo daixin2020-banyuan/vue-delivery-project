@@ -17,6 +17,13 @@ Vue.filter('globalFormatTime', value => {
    return time;
 });
 
+/* 金额样式过滤器 */
+
+Vue.filter('FormatPrice', (value) => {
+   value = (value / 100).toFixed(2);
+   return '$' + value;
+});
+
 new Vue({
    router,
    store,

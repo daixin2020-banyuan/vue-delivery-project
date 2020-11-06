@@ -14,8 +14,6 @@ const restTitle = {
          state.name.title = data.title;
          state.name.tags = data.tags;
          state.name.restId = data.restId;
-         console.log('00--0-0-0-0-0-0',state);
-
       },
 
    },

@@ -1,0 +1,37 @@
+@import '@/style/color.scss';
+.menu-box{
+    position : relative;
+    margin-top : 65px;
+    margin-bottom : 50px;
+    margin-left : 100px; 
+    .titleText{
+        font-family : PingFangSC-Regular;
+        font-size : 30px;
+        font-style : normal;
+        font-weight : 600;
+        font-stretch : normal;
+        color : $black;
+        letter-spacing : normal;
+        cursor : pointer;
+    }
+    .subTitleTexts{
+        display : flex;
+        width : 220px;
+        height : 24px;
+        font-size : 16px;
+        font-weight : 400;
+        line-height : 1.5;
+        color : rgb(121, 121, 121);
+        .subTitleText {   
+            margin-right : 10px;
+        }
+    }
+    .all-category-box{
+        grid-column-gap : 12%;
+        column-gap : 12%;
+        width : 100%;
+        max-width : 700px;
+        margin-top : 69px;
+        column-count : 2;
+    }
+}

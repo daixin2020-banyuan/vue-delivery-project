@@ -3,8 +3,8 @@
 
 .menu-cart-container{
     position : fixed;
-    right : 120px;
-    bottom : 24px;
+    right : calc((100vw - 1440px)/2 + 120px);
+    bottom : calc(28vh - 187.6px);
     display : flex;
     flex-direction : row;
     transition : all 0.3s linear 0s;
@@ -45,6 +45,7 @@
 
 .cart-details-container{
     max-height : 568px;
+    padding-right : 30px;
     overflow : scroll;
 }
 

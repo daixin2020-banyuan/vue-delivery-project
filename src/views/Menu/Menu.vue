@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="menu-box">
+      <!-- 标题 -->
       <div class="titleText">
-        <!-- {{ restItem.name[`${lang}`] }} -->
         {{ name.title[`${lang}`] }}
       </div>
+      <!-- 分类 -->
       <div class="sub-titleText">
-        <!-- {{ $t(`tags.${restItem.tags}`) }} -->
         <div
           v-for="i in restTags"
           :key="i.id"
@@ -14,67 +14,36 @@
           {{ i.tag }}
         </div>
       </div>
+      <!-- 菜单页面循环渲染 -->
       <div class="all-category-box">
-        <div
-          v-for="item in menuList "
-          :key="item.id"
-          class="category-box"
-        >
-          <div>
-            <div class="titleText">
-              {{ item.category.name[`${lang}`] }}
-            </div>
-            <div
-              class="rectangle"
-              style="position : relative; left : 0px;"
-            ></div>
-          </div>
-
-          <div
-            v-for="i in item.foods "
-            :key="i.id"
-            class="menu-food-item cursor"
-          >
-            <div>
-              <div
-                v-show=" i.count>0 "
-                class="menu-count"
-              >
-                <div class="menu-count-text">
-                  {{ i.count }}
-                </div>
-              </div>
-            </div>
-            <div
-              class="containerBetween cursor"
-              @click="addCount(i)"
-            >
-              <div
-                class="menu-text cursor"
-                :style="{ opacity : i.available ? 1 : 0.2}"
-              >
-                {{ i.name[`${lang}`] }}
-              </div>
-              <div
-                class="menu-price cursor"
-                :style="{ opacity : i.available ? 1 : 0.2}"
-              >
-                {{ i.price|formatPrice }}
-              </div>
-            </div>
-          </div>
+        <!-- 没有菜品 -->
+        <div v-if="renderFoods.length === 0 ">
+          {{ $t('menu.no-menu') }}
         </div>
+        <!-- 渲染菜品 -->
+        <MenuItem
+          v-for="item in renderFoods"
+          :key="item.categories._id"
+          :foods="item.foods"
+          :categories="item.categories"
+        />
       </div>
     </div>
-    <Cart>123</Cart>
+    <div class="menu-cart">
+      <div class="menu-cart-container">
+        <Cart />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Cart from './component/Cart';
+import MenuItem from '@/components/MenuItem/MenuItem';
+import Cart from '@/components/Cart/Cart';
 import {  mapActions ,mapState } from 'vuex';
-import { setStorage  } from '@/common/utils.js';
+import { setStorage,getStorage  } from '@/common/utils.js';
 import _ from 'lodash';
+import * as types from '@/store/mutation-types.js';
 import { v4 as uuidv4 } from 'uuid';
 
 import './menu.scss';
@@ -87,6 +56,7 @@ export default {
       }
    },
    components:{
+      MenuItem,
       Cart
    },
    data (){
@@ -100,16 +70,25 @@ export default {
    },
    computed:{
       ...mapState({
-         menuList: state=>state.menu.menuList,
-         lang:state=>state.language.lang,
-         count:state=>state.menu.count,
-         name:state=>state.restTitle.name
+
+         /* 种类 */
+         'categories':state=>state.menu.menuList.categories,
+
+         /* 菜单详情 */
+         'foods':state=>state.menu.menuList.foods,
+
+         /* 语言切换 */
+         'lang':state=>state.language.lang,
+
+         /* 菜单标题和分类 */
+         'name':state=>state.restTitle.name
       }),
+
       /* 用lodash重新计算值 否则由于请求是异步操作页面进来取不到item的值会报错 */
       restName (){
-         //  console.log('this.name.title=====>',this.name.title);
          return _.get(this.name.title,`name[${this.lang}]`,'');
       },
+
       restTags (){
          let restTags = [];
          /* tags是一个数组 遍历tags 根据语言变化 */
@@ -123,15 +102,34 @@ export default {
 
       },
 
+      /* 重构数据 */
+      renderFoods (){
+         const menuList = [];
+
+         _.forEach(this.categories,(item)=>{
+            /* 找到每一个category中对应的所有foods */
+            const categoryId = _.get(item,'_id');
+            const foodList = _.filter(this.foods, { category: { _id: categoryId } });
+            menuList.push({
+               foods: _.orderBy(foodList, [ 'available' ], [ 'desc' ]),
+               categories: item
+            });
+
+         });
+         return menuList;
+      },
+
    },
    created (){
-      /* 由restaurantItem传来的商店id */
-      // console.log('restaurant传值 item', this.$route.params.restItem);
-      // console.log('restaurant传值 id', this.$route.params.restId);
-      // console.log('restaurant传值 id123131', this.restItem);
-      /* 将id传入actions中 */
-      // this.getMenu(this.restItem._id);
+
       this.getMenu(this.id);
+
+      /* 进入新餐馆，删除购物车 */
+      const cartId = getStorage('cartId');
+      if(cartId !== this.id){
+         setStorage('cart',[]);
+         this.$store.commit(types.CLEAR_CART);
+      }
    },
 
    methods:{

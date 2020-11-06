@@ -20,9 +20,7 @@ import restTitle from './restaurantTitle';
 
 /* menu */
 import menu from '@/views/Menu/module/index';
-
-/* submit */
-import submit from '@/views/Menu/component/module/index';
+import cart from '@/components/Cart/module/index';
 
 /* language */
 import language from './language';
@@ -40,12 +38,12 @@ export default new Vuex.Store({
       loading,
       login,
       menu,
-      submit,
       language,
       order,
       regist,
       restList,
-      restTitle
+      restTitle,
+      cart
 
    }
 });

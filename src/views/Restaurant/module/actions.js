@@ -9,7 +9,7 @@ const actions =  {
       try {
          commit(types.SHOW_LOADING);
 
-         await sleep(2000);
+         await sleep(200);
 
          const data = await rest();
 

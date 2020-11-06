@@ -1,13 +1,14 @@
 import actions from './actions';
 import mutations from './mutations';
-import { getStorage } from '@/common/utils';
+// import { getStorage } from '@/common/utils';
 
 const menu = {
 
    state:{
-      menuList :  getStorage('menuList') || {} ,
-      count:  getStorage('cart') || []
-
+      menuList:{
+         categories:[],
+         foods:[]
+      }
    },
    actions,
    mutations

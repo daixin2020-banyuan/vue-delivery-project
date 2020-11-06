@@ -6,9 +6,9 @@ export const HIDE_LOADING = 'HIDE_LOADING';
 /* Menu */
 export const GET_MENU = 'GET_MENU';
 
-export const SET_COUNTARRAY = 'SET_COUNTARRAY';
+export const SAVE_CART = 'SAVE_CART';
 
-export const DEL_COUNTARRAY = 'DEL_COUNTARRAY';
+export const CLEAR_CART = 'CLEAR_CART';
 
 export const SUBMIT_ORDER = 'SUBMIT_ORDER';
 

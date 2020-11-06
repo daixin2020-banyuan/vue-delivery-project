@@ -20,7 +20,7 @@
                 ref="alipay"
                 type="radio"
                 name="light"
-                checked
+                :checked="value=='alipay' ? true : false"
                 @click="paymentMethod('alipay')"
               >
               <span class="design"></span>
@@ -34,6 +34,7 @@
                 ref="wechat"
                 type="radio"
                 name="light"
+                :checked="value=='wechat' ? true : false"
                 @click="paymentMethod('wechat')"
               >
               <span class="design"></span>
@@ -47,6 +48,7 @@
                 ref="applePay"
                 type="radio"
                 name="light"
+                :checked="value=='applePay' ? true : false"
                 @click="paymentMethod('applePay')"
               >
               <span class="design"></span>
@@ -76,42 +78,15 @@
 
     <div :class="[ flagShow ? 'menu-cart-main-container-expand' : 'menu-cart-main-container']">
       <div
-        v-if="orderItems.length >0"
+        v-if="orderItems.length > 0"
         class="cart-details-container"
       >
-        <div
-          v-for="item in orderItems "
-          :key="item.id"
-        >
-          <div
-            v-show="item.count>0"
-            class="containerBetween vertical cart-item"
-          >
-            <div class="cart-item-name">
-              {{ item.name[`${lang}`] }}
-            </div>
-            <div class="containerRowCenter">
-              <div class="cart-item-price">
-                {{ item.price * item.count|formatPrice }}
-              </div>
-              <button
-                class="cart-remove-button"
-                @click="delItem(item)"
-              >
-                -
-              </button>
-              <div class="cart-item-count">
-                {{ item.count }}
-              </div>
-              <button
-                class="cart-add-button"
-                @click="addItem(item)"
-              >
-                +
-              </button>
-            </div>
-          </div>
-        </div>
+        <CartItem
+          v-for=" items in orderItems"
+          :key="items._id"
+          :items="items"
+          :showbtn="true"
+        />
       </div>
       <div
         v-else
@@ -126,7 +101,7 @@
       >
         <div> {{ $t("menu.total") }}: </div>
         <div>
-          {{ totalPrice | formatPrice }}
+          {{ totalPrice | FormatPrice }}
         </div>
       </div>
 
@@ -162,6 +137,7 @@
 <script>
 
 import {  mapActions ,mapState } from 'vuex';
+import CartItem from '@/components/CartItem/CartItem';
 import _ from 'lodash';
 import { setStorage ,getStorage } from '@/common/utils.js';
 import errorModal from '@/components/errorModal/ErrorModal';
@@ -169,78 +145,68 @@ import errorModal from '@/components/errorModal/ErrorModal';
 export default {
    name:'Cart',
    components:{
+      CartItem,
       errorModal
 
-   },
-   filters: {
-      formatPrice (value) {
-         return '$' + value / 100;
-      }
    },
 
    data (){
       return{
          flagShow: false,
-         value:  'alipay' || getStorage('payment').value
+         value:   getStorage('payment').value || 'alipay'
       };
    },
    computed:{
       ...mapState({
-         lang:state=>state.language.lang,
-         count:state=>state.menu.count
+         'lang':state=>state.language.lang,
+         'cart':state=>state.cart.cart
 
       }),
+
       orderItems (){
-
-         const orderItems = _(this.count)
-            .uniq(i=>i._id)
-            .value();
-
-         return orderItems;
-
+         /* 购物车为空 */
+         if(_.isEmpty(this.cart)){
+            return [];
+         }
+         /* 获取购物车数据 */
+         const groupCart = _.groupBy(this.cart, (item) => item._id);
+         return _.toArray(groupCart);
       },
 
       totalPrice (){
-         let a  = 0;
+         let totalPrice  = 0;
          _.forEach(this.orderItems,(i)=>{
-            a += i.count * i.price;
+            totalPrice +=  i[0].price * i.length;
          });
-         return a;
+         return totalPrice;
       }
 
    },
    created (){
+      // this.paymentSetLocal();
+   },
+   updated (){
+      // console.log(this.orderItems);
+
    },
 
    methods:{
-      ...mapActions([ 'setCountArray' ,'delCountArray','submitOrder' ]),
-      addItem (i){
-         i.count += 1;
-         this.setCountArray(i);
-         setStorage('cart',this.count);
-      },
-      delItem (i){
-         if(i.count > 0){
-            i.count -= 1;
-            let index = _.findIndex(this.count,(item)=>{
+      ...mapActions([ 'orderFood','addCart','removeCart' ]),
 
-               return item._id == i._id;
-
-            });
-            this.delCountArray(index);
-            setStorage('cart',this.count);
-
-         }
-      },
       submit (){
          this.flagShow = true;
       },
       paymentMethod (value){
          this.value = value;
+         console.log(this.$refs[`${this.value}`].checked);
+         setStorage('payment',{ value:this.value });
 
       },
       closePayment (){
          this.flagShow = false;
+      },
+      paymentSetLocal (){
+         this.$refs[`${this.value}`].checked = true;
       },
       async confirmPayment (){
          setStorage('payment',{ value:this.value });
@@ -254,26 +220,12 @@ export default {
                   });
                }
             });
-
          }else{
-            this.submitOrder();
-            this.$router.push({
-               path:'/order'
-            });
+            this.orderFood();
+
          }
 
       },
-      paymentSetLocal (){
-         this.$refs[`${this.value}`].checked = true;
-      },
-      sleep (time){
-         return new Promise((res)=>{
-
-            setTimeout(()=>{
-               res();
-            },time);
-         });
-      }
 
    }
 
