@@ -57,7 +57,7 @@
       <div class="containerBetween order-total">
         <div>总价:</div>
 
-        <div>${{ totalPrice.toFixed(2) }}</div>
+        <div>${{ totalPrice | FormatPrice }}</div>
       </div>
       <div class="containerRowCenter more-btn">
         <button
@@ -118,24 +118,10 @@ export default {
          /* 初始化total */
          let total = 0;
 
-         //  _.forEach(this.orderItems,(i)=>{
-         //     console.log('i=====>',i);
-         //     for(let j = 0; j < i.length; j++){
-         //        total += i[j].price / 100;
-         //        console.log('j=====>',j);
-         //     }
-         //     // this.$set(this.orderItems, 'total', total);
-         //     return total;
-
-         //  });
-         //  console.log(this.$props.item.cart);
-
          /* 循环每个cart里的price */
          _.forEach(this.$props.item.cart,(item)=>{
-            total += item.price / 100;
+            total += item.price;
          });
-
-         //  console.log('total=======>',total);
 
          return total;
 
@@ -163,7 +149,6 @@ export default {
          /* 取消事件默认行为 */
          e.preventDefault();
          this.changeStyle = true;
-         //  this.changeStyle = !this.changeStyle;
          /* 添加handleOut鼠标事件 */
          document.addEventListener('click', this.handleOut, true);
          console.log('change',this.changeStyle);
